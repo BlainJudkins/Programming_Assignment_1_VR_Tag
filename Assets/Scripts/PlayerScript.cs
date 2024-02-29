@@ -4,14 +4,10 @@ using UnityEngine;
 
 public class PlayerScript : MonoBehaviour
 {
-    public CharacterController characterController;
+    // public CharacterController characterController;
     public Transform headTransform;
     public float moveSpeed = 3f;
 
-
-
-    // public float gravity = 9.81f;
-    private GravityController GravityControllerScript;
 
 
     public OVRInput.Button crouchButton;
@@ -24,8 +20,7 @@ public class PlayerScript : MonoBehaviour
 
     void Start()
     {
-        characterController = GetComponent<CharacterController>();
-        GravityControllerScript = GetComponent<GravityController>();
+        
     }
 
 
@@ -56,13 +51,6 @@ public class PlayerScript : MonoBehaviour
 
         // Apply the movement speed to the direction
         moveDirection = move * moveSpeed;
-
-        // Apply gravity
-        // Debug.Log(GravityControllerScript.Gravity.Gravity);
-        moveDirection.y -= GravityControllerScript.Gravity.Gravity * Time.deltaTime * 50; 
-
-        // Move the character controller
-        characterController.Move(moveDirection * Time.deltaTime);
     }
 
 }
