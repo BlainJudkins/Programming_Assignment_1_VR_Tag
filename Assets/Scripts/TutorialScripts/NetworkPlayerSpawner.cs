@@ -20,7 +20,8 @@ public class NetworkPlayerSpawner : MonoBehaviourPunCallbacks
 
         if (randomRespawnNumber >= 0 && randomRespawnNumber <= 5)
         {
-            PhotonNetwork.Instantiate("OVRCameraRig", spawnPoints[randomRespawnNumber].transform.position, spawnPoints[randomRespawnNumber].transform.rotation);
+            // PhotonNetwork.Instantiate("OVRCameraRig", spawnPoints[randomRespawnNumber].transform.position, spawnPoints[randomRespawnNumber].transform.rotation);
+            PhotonNetwork.Instantiate("OVRCameraRig", spawnPoints[0].transform.position, spawnPoints[0].transform.rotation);
             
             // GameObject playerObject = PhotonNetwork.Instantiate("OVRCameraRig", spawnPoints[numPlayers].transform.position, spawnPoints[numPlayers].transform.rotation);
             // InitializePlayer(playerObject);

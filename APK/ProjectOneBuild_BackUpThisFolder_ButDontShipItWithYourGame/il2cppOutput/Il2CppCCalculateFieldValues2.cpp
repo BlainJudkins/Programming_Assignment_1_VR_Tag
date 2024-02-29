@@ -29973,8 +29973,6 @@ struct MainGameScript_tA21A07133E22BC39FAD9D975060C032C054ADFDE  : public MonoBe
 {
 	// System.Collections.Generic.List`1<MainGameScript/Player> MainGameScript::players
 	List_1_t74241B50DED30FE587C9379EFA9AC31894763704* ___players_4;
-	// System.Int32 MainGameScript::numPlayers
-	int32_t ___numPlayers_5;
 };
 
 // UnityEngine.XR.OpenXR.Features.Interactions.MicrosoftHandInteraction
@@ -34864,8 +34862,10 @@ struct NetworkPlayerSpawner_t1696AC41E19750BAE24DCA6F65B071BF438DC1D0  : public 
 	List_1_tB951CE80B58D1BF9650862451D8DAD8C231F207B* ___spawnPoints_5;
 	// MainGameScript NetworkPlayerSpawner::mainScript
 	MainGameScript_tA21A07133E22BC39FAD9D975060C032C054ADFDE* ___mainScript_6;
+	// System.Int32 NetworkPlayerSpawner::randomRespawnNumber
+	int32_t ___randomRespawnNumber_7;
 	// UnityEngine.GameObject NetworkPlayerSpawner::spawnedPlayerObject
-	GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* ___spawnedPlayerObject_7;
+	GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* ___spawnedPlayerObject_8;
 };
 
 // UnityEngine.UIElements.PanelRaycaster
@@ -39677,9 +39677,9 @@ IL2CPP_EXTERN_C const int32_t g_FieldOffsetTable7391[2] =
 IL2CPP_EXTERN_C const int32_t g_FieldOffsetTable7392[6] = 
 {
 	static_cast<int32_t>(offsetof(Player_t77570F043B0E973682F0C6C554B0CAC67FDD658E, ___playerID_0)),static_cast<int32_t>(offsetof(Player_t77570F043B0E973682F0C6C554B0CAC67FDD658E, ___numLives_1)),static_cast<int32_t>(offsetof(Player_t77570F043B0E973682F0C6C554B0CAC67FDD658E, ___teleportCredits_2)),static_cast<int32_t>(offsetof(Player_t77570F043B0E973682F0C6C554B0CAC67FDD658E, ___speed_3)),static_cast<int32_t>(offsetof(Player_t77570F043B0E973682F0C6C554B0CAC67FDD658E, ___isChaser_4)),static_cast<int32_t>(offsetof(Player_t77570F043B0E973682F0C6C554B0CAC67FDD658E, ___playerBody_5)),};
-IL2CPP_EXTERN_C const int32_t g_FieldOffsetTable7393[2] = 
+IL2CPP_EXTERN_C const int32_t g_FieldOffsetTable7393[1] = 
 {
-	static_cast<int32_t>(offsetof(MainGameScript_tA21A07133E22BC39FAD9D975060C032C054ADFDE, ___players_4)),static_cast<int32_t>(offsetof(MainGameScript_tA21A07133E22BC39FAD9D975060C032C054ADFDE, ___numPlayers_5)),};
+	static_cast<int32_t>(offsetof(MainGameScript_tA21A07133E22BC39FAD9D975060C032C054ADFDE, ___players_4)),};
 IL2CPP_EXTERN_C const int32_t g_FieldOffsetTable7394[8] = 
 {
 	static_cast<int32_t>(offsetof(PlayerScript_tE076C73DDA6A5F8E4029DF5D763FB2E5C79B3D35, ___headTransform_4)),static_cast<int32_t>(offsetof(PlayerScript_tE076C73DDA6A5F8E4029DF5D763FB2E5C79B3D35, ___moveSpeed_5)),static_cast<int32_t>(offsetof(PlayerScript_tE076C73DDA6A5F8E4029DF5D763FB2E5C79B3D35, ___crouchButton_6)),static_cast<int32_t>(offsetof(PlayerScript_tE076C73DDA6A5F8E4029DF5D763FB2E5C79B3D35, ___jumpButton_7)),static_cast<int32_t>(offsetof(PlayerScript_tE076C73DDA6A5F8E4029DF5D763FB2E5C79B3D35, ___turnLeftButton_8)),static_cast<int32_t>(offsetof(PlayerScript_tE076C73DDA6A5F8E4029DF5D763FB2E5C79B3D35, ___turnRightButton_9)),static_cast<int32_t>(offsetof(PlayerScript_tE076C73DDA6A5F8E4029DF5D763FB2E5C79B3D35, ___turnAngle_10)),static_cast<int32_t>(offsetof(PlayerScript_tE076C73DDA6A5F8E4029DF5D763FB2E5C79B3D35, ___moveDirection_11)),};
@@ -39689,9 +39689,9 @@ IL2CPP_EXTERN_C const int32_t g_FieldOffsetTable7395[1] =
 IL2CPP_EXTERN_C const int32_t g_FieldOffsetTable7396[16] = 
 {
 	static_cast<int32_t>(offsetof(MovementManager_t9D2D2353559B705F88BEFA74EAE2490B90E03E50, ___myView_4)),static_cast<int32_t>(offsetof(MovementManager_t9D2D2353559B705F88BEFA74EAE2490B90E03E50, ___myChild_5)),static_cast<int32_t>(offsetof(MovementManager_t9D2D2353559B705F88BEFA74EAE2490B90E03E50, ___xInput_6)),static_cast<int32_t>(offsetof(MovementManager_t9D2D2353559B705F88BEFA74EAE2490B90E03E50, ___yInput_7)),static_cast<int32_t>(offsetof(MovementManager_t9D2D2353559B705F88BEFA74EAE2490B90E03E50, ___movementSpeed_8)),static_cast<int32_t>(offsetof(MovementManager_t9D2D2353559B705F88BEFA74EAE2490B90E03E50, ___inputData_9)),static_cast<int32_t>(offsetof(MovementManager_t9D2D2353559B705F88BEFA74EAE2490B90E03E50, ___myRB_10)),static_cast<int32_t>(offsetof(MovementManager_t9D2D2353559B705F88BEFA74EAE2490B90E03E50, ___myXRRig_11)),static_cast<int32_t>(offsetof(MovementManager_t9D2D2353559B705F88BEFA74EAE2490B90E03E50, ___headTransform_12)),static_cast<int32_t>(offsetof(MovementManager_t9D2D2353559B705F88BEFA74EAE2490B90E03E50, ___moveSpeed_13)),static_cast<int32_t>(offsetof(MovementManager_t9D2D2353559B705F88BEFA74EAE2490B90E03E50, ___crouchButton_14)),static_cast<int32_t>(offsetof(MovementManager_t9D2D2353559B705F88BEFA74EAE2490B90E03E50, ___jumpButton_15)),static_cast<int32_t>(offsetof(MovementManager_t9D2D2353559B705F88BEFA74EAE2490B90E03E50, ___turnLeftButton_16)),static_cast<int32_t>(offsetof(MovementManager_t9D2D2353559B705F88BEFA74EAE2490B90E03E50, ___turnRightButton_17)),static_cast<int32_t>(offsetof(MovementManager_t9D2D2353559B705F88BEFA74EAE2490B90E03E50, ___turnAngle_18)),static_cast<int32_t>(offsetof(MovementManager_t9D2D2353559B705F88BEFA74EAE2490B90E03E50, ___moveDirection_19)),};
-IL2CPP_EXTERN_C const int32_t g_FieldOffsetTable7398[3] = 
+IL2CPP_EXTERN_C const int32_t g_FieldOffsetTable7398[4] = 
 {
-	static_cast<int32_t>(offsetof(NetworkPlayerSpawner_t1696AC41E19750BAE24DCA6F65B071BF438DC1D0, ___spawnPoints_5)),static_cast<int32_t>(offsetof(NetworkPlayerSpawner_t1696AC41E19750BAE24DCA6F65B071BF438DC1D0, ___mainScript_6)),static_cast<int32_t>(offsetof(NetworkPlayerSpawner_t1696AC41E19750BAE24DCA6F65B071BF438DC1D0, ___spawnedPlayerObject_7)),};
+	static_cast<int32_t>(offsetof(NetworkPlayerSpawner_t1696AC41E19750BAE24DCA6F65B071BF438DC1D0, ___spawnPoints_5)),static_cast<int32_t>(offsetof(NetworkPlayerSpawner_t1696AC41E19750BAE24DCA6F65B071BF438DC1D0, ___mainScript_6)),static_cast<int32_t>(offsetof(NetworkPlayerSpawner_t1696AC41E19750BAE24DCA6F65B071BF438DC1D0, ___randomRespawnNumber_7)),static_cast<int32_t>(offsetof(NetworkPlayerSpawner_t1696AC41E19750BAE24DCA6F65B071BF438DC1D0, ___spawnedPlayerObject_8)),};
 IL2CPP_EXTERN_C const int32_t g_FieldOffsetTable7399[4] = 
 {
 	static_cast<int32_t>(offsetof(ConnectAndJoinRandomLb_tB03E3C55EE4600CE6CE25C6DB2632F6CA029CF39, ___appSettings_4)),static_cast<int32_t>(offsetof(ConnectAndJoinRandomLb_tB03E3C55EE4600CE6CE25C6DB2632F6CA029CF39, ___lbc_5)),static_cast<int32_t>(offsetof(ConnectAndJoinRandomLb_tB03E3C55EE4600CE6CE25C6DB2632F6CA029CF39, ___ch_6)),static_cast<int32_t>(offsetof(ConnectAndJoinRandomLb_tB03E3C55EE4600CE6CE25C6DB2632F6CA029CF39, ___StateUiText_7)),};
