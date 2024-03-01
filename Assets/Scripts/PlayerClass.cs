@@ -18,4 +18,20 @@ public class PlayerClass : MonoBehaviour
         this.isChaser = isChaser;
         this.playerBody = playerBody;
     }
+
+    void Update()
+    {
+
+        Renderer renderer = GetComponent<Renderer>();
+        if (isChaser)
+        {
+            // Debug.Log("player " + i.ToString() + " is chaser");
+            renderer.material.color = Color.red;
+        }
+        else
+        {
+            renderer.material.color = Color.blue;
+        }
+        
+    }
 }

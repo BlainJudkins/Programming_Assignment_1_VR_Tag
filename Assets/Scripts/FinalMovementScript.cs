@@ -34,7 +34,7 @@ public class FinalMovementScript : MonoBehaviour
        
        
         myChild = transform.GetChild(0).gameObject;
-        myRenderer = myChild.GetComponent<MeshRenderer>();
+        myRenderer = myChild.GetComponent<MeshRenderer>(); // hides the body from the player's POV
         myRB = myChild.GetComponent<Rigidbody>();
        
         GameObject myXrOrigin = GameObject.Find("XR Origin");
@@ -43,7 +43,7 @@ public class FinalMovementScript : MonoBehaviour
         inputData = myXrOrigin.GetComponent<InputData>();
          if(myView.IsMine){
 
-            myRenderer.enabled = false;
+            // myRenderer.enabled = false; // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! determines if player sees their own body
             myXRRig.position = myChild.transform.position;
             myXrOrigin.transform.SetParent(transform.GetChild(0).transform);
 

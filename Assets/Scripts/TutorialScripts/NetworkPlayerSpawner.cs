@@ -21,14 +21,20 @@ public class NetworkPlayerSpawner : MonoBehaviourPunCallbacks
         if (randomRespawnNumber >= 0 && randomRespawnNumber <= 5)
         {
             // PhotonNetwork.Instantiate("OVRCameraRig", spawnPoints[randomRespawnNumber].transform.position, spawnPoints[randomRespawnNumber].transform.rotation);
-            PhotonNetwork.Instantiate("Player", spawnPoints[0].transform.position, spawnPoints[0].transform.rotation);
-            
+            // PhotonNetwork.Instantiate("Player", spawnPoints[randomRespawnNumber].transform.position, spawnPoints[randomRespawnNumber].transform.rotation);
+            PhotonNetwork.Instantiate("Player", spawnPoints[randomRespawnNumber].transform.position, Quaternion.identity);
+
+
+
+
             // GameObject playerObject = PhotonNetwork.Instantiate("OVRCameraRig", spawnPoints[numPlayers].transform.position, spawnPoints[numPlayers].transform.rotation);
             // InitializePlayer(playerObject);
         }
         else
         {
-            PhotonNetwork.Instantiate("Player", spawnPoints[5].transform.position, spawnPoints[5].transform.rotation);
+            // PhotonNetwork.Instantiate("Player", spawnPoints[5].transform.position, spawnPoints[5].transform.rotation);
+            PhotonNetwork.Instantiate("Player", spawnPoints[5].transform.position, Quaternion.identity);
+            
         }
     }
 
@@ -40,23 +46,6 @@ public class NetworkPlayerSpawner : MonoBehaviourPunCallbacks
 
 
 
-    // Save instantiated players to the players list in main
-    // void InitializePlayer(GameObject playerObject)
-    // {
-    //     int playerIndex = mainScript.players.Count;
-
-    //     // Determine if the player is the chaser
-    //     bool isChaser = false;
-    //     if (playerIndex == 0)
-    //     {
-    //         isChaser = true;
-    //     }
-
-    //     // Add player to the player list with default attributes
-    //     mainScript.players.Add(new MainGameScript.Player(playerIndex, isChaser, playerObject));
-    //     Debug.Log("numplayers = " + mainScript.players.Count);
-
-    // }
 }
 
 
