@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 9118407937482953949}
   - component: {fileID: 7299700022930739852}
   - component: {fileID: 8844642515520263180}
+  - component: {fileID: 4702025964890724715}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -72,6 +73,23 @@ MonoBehaviour:
   groundedMask:
     serializedVersion: 2
     m_Bits: 0
+--- !u!114 &4702025964890724715
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2971337353430760352}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72a0727d541964f1e9a6ec3305795823, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerID: 0
+  numLives: 0
+  teleportCredits: 0
+  speed: 0
+  renderer: {fileID: 0}
 --- !u!1 &8980448248866119677
 GameObject:
   m_ObjectHideFlags: 0
@@ -87,7 +105,6 @@ GameObject:
   - component: {fileID: 8954331465174714880}
   - component: {fileID: 417782739191975876}
   - component: {fileID: 380155364789108626}
-  - component: {fileID: 2783947441482273173}
   m_Layer: 0
   m_Name: Body
   m_TagString: Player
@@ -238,21 +255,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31b4fc5229229ff4fa12206be4185ebf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &2783947441482273173
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8980448248866119677}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 72a0727d541964f1e9a6ec3305795823, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerID: 0
-  numLives: 0
-  teleportCredits: 0
-  speed: 0
-  isChaser: 0
-  playerBody: {fileID: 0}

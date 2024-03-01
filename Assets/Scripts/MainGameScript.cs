@@ -24,9 +24,9 @@ public class MainGameScript : MonoBehaviour    // assogm to an empty game object
         // player1.playerBody = firstPlayer;
         // players.Add(player1);
 
-        firstPlayer.transform.GetChild(0).GetComponent<PlayerClass>().playerID = 0;
-        firstPlayer.transform.GetChild(0).GetComponent<PlayerClass>().isChaser = true;
-        firstPlayer.transform.GetChild(0).GetComponent<PlayerClass>().playerBody = firstPlayer.gameObject;
+        // firstPlayer.transform.GetChild(0).GetComponent<PlayerClass>().playerID = 0;
+        // firstPlayer.transform.GetChild(0).GetComponent<PlayerClass>().isChaser = true;
+        // firstPlayer.transform.GetChild(0).GetComponent<PlayerClass>().playerBody = firstPlayer.gameObject;
 
         //spawn 3 dummies
         // spawnDummyPLayers();
@@ -37,44 +37,44 @@ public class MainGameScript : MonoBehaviour    // assogm to an empty game object
         
     }
 
-    void spawnDummyPLayers()
-    {
-        randomRespawnNumber = Random.Range(0, 6);
-        Debug.Log("random Number: " + randomRespawnNumber);
-        GameObject dummyPlayerObject;
+    // void spawnDummyPLayers()
+    // {
+    //     randomRespawnNumber = Random.Range(0, 6);
+    //     Debug.Log("random Number: " + randomRespawnNumber);
+    //     GameObject dummyPlayerObject;
 
-        if (randomRespawnNumber >= 0 && randomRespawnNumber <= 5)
-        {
-            // PhotonNetwork.Instantiate("OVRCameraRig", spawnPoints[randomRespawnNumber].transform.position, spawnPoints[randomRespawnNumber].transform.rotation);
-            dummyPlayerObject = Instantiate(dummyPlayer, spawnPoints[randomRespawnNumber].transform.position, spawnPoints[randomRespawnNumber].transform.rotation);
+    //     if (randomRespawnNumber >= 0 && randomRespawnNumber <= 5)
+    //     {
+    //         // PhotonNetwork.Instantiate("OVRCameraRig", spawnPoints[randomRespawnNumber].transform.position, spawnPoints[randomRespawnNumber].transform.rotation);
+    //         dummyPlayerObject = Instantiate(dummyPlayer, spawnPoints[randomRespawnNumber].transform.position, spawnPoints[randomRespawnNumber].transform.rotation);
             
-            // GameObject playerObject = PhotonNetwork.Instantiate("OVRCameraRig", spawnPoints[numPlayers].transform.position, spawnPoints[numPlayers].transform.rotation);
-            // InitializePlayer(playerObject);
-        }
-        else
-        {
-            dummyPlayerObject = Instantiate(dummyPlayer, spawnPoints[randomRespawnNumber].transform.position, spawnPoints[randomRespawnNumber].transform.rotation);
-        }
+    //         // GameObject playerObject = PhotonNetwork.Instantiate("OVRCameraRig", spawnPoints[numPlayers].transform.position, spawnPoints[numPlayers].transform.rotation);
+    //         // InitializePlayer(playerObject);
+    //     }
+    //     else
+    //     {
+    //         dummyPlayerObject = Instantiate(dummyPlayer, spawnPoints[randomRespawnNumber].transform.position, spawnPoints[randomRespawnNumber].transform.rotation);
+    //     }
 
 
-        int playerIndex = players.Count;
+    //     int playerIndex = players.Count;
 
-        // Determine if the player is the chaser
-        bool isChaser = false;
-        if (playerIndex == 0)
-        {
-            isChaser = true;
-        }
+    //     // Determine if the player is the chaser
+    //     bool isChaser = false;
+    //     if (playerIndex == 0)
+    //     {
+    //         isChaser = true;
+    //     }
 
-        // Add player to the player list with default attributes
-        // players.Add(new PlayerClass(playerIndex, isChaser, dummyPlayerObject));
-        PlayerClass temp = new PlayerClass(playerIndex, isChaser, dummyPlayerObject);
-        GameObject tempParent = temp.transform.parent.gameObject;
-        players.Add(tempParent);
+    //     // Add player to the player list with default attributes
+    //     // players.Add(new PlayerClass(playerIndex, isChaser, dummyPlayerObject));
+    //     PlayerClass temp = new PlayerClass(playerIndex, isChaser, dummyPlayerObject);
+    //     GameObject tempParent = temp.transform.parent.gameObject;
+    //     players.Add(tempParent);
         
-        Debug.Log("numplayers = " + players.Count);
+    //     Debug.Log("numplayers = " + players.Count);
 
-    }
+    // }
     
 
 
