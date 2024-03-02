@@ -757,11 +757,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
---- !u!1 &474784038 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2971337353430760352, guid: 8d104ce79186a4ed4922bb89f49c5edb, type: 3}
-  m_PrefabInstance: {fileID: 1742395044}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &489363350
 GameObject:
   m_ObjectHideFlags: 0
@@ -2725,6 +2720,7 @@ MonoBehaviour:
   - {fileID: 1479240233}
   - {fileID: 727634181}
   - {fileID: 1634221936}
+  mainScript: {fileID: 2091543082}
 --- !u!114 &1585739641
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4375,7 +4371,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   players: []
-  firstPlayer: {fileID: 474784038}
+  firstPlayer: {fileID: 2971337353430760352, guid: 8d104ce79186a4ed4922bb89f49c5edb, type: 3}
   spawnPoints:
   - {fileID: 851382167}
   - {fileID: 1865694605}
@@ -4384,6 +4380,7 @@ MonoBehaviour:
   - {fileID: 727634181}
   - {fileID: 1634221936}
   dummyPlayer: {fileID: 2971337353430760352, guid: bf223d4a32ea9411ca12ced3f3809ce1, type: 3}
+  numPlayers: 0
 --- !u!4 &2091543083
 Transform:
   m_ObjectHideFlags: 0

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Photon.Realtime;
 using UnityEngine;
 
 public class MainGameScript : MonoBehaviour    // assogm to an empty game object in the scene
@@ -8,80 +9,73 @@ public class MainGameScript : MonoBehaviour    // assogm to an empty game object
     public List<GameObject> players = new List<GameObject>();
     [SerializeField] private GameObject firstPlayer;
     PlayerClass player1;
-    [SerializeField] List<GameObject> spawnPoints = new List<GameObject>();
+    [SerializeField] public List<GameObject> spawnPoints = new List<GameObject>();
     [SerializeField] GameObject dummyPlayer;
     int randomRespawnNumber = 0;
+    public int numPlayers = 0;
     
+
+    bool flagNumPlayers = false; // flag for spawning set of dummy players ONCE AFTER the first actual player has entered the game
   
 
     // Update is called once per frame
     
     void Start()
     {
-        // player1 = firstPlayer.transform.GetChild(0).GetComponent<PlayerClass>();
-        // player1.playerID = 0;
-        // player1.isChaser = true;
-        // player1.playerBody = firstPlayer;
-        // players.Add(player1);
 
-        // firstPlayer.transform.GetChild(0).GetComponent<PlayerClass>().playerID = 0;
-        // firstPlayer.transform.GetChild(0).GetComponent<PlayerClass>().isChaser = true;
-        // firstPlayer.transform.GetChild(0).GetComponent<PlayerClass>().playerBody = firstPlayer.gameObject;
+        // **TO TURN MULTIPLAYER BACK ON**
+        // - In PlayerClass script, flip the commented out code sections
+        // - Enable NetworkManager in Unity Hierarchy
+        // - In MainGameScript, comment out spawnFirstPlayer() in Update()
+        
 
-        //spawn 3 dummies
-        // spawnDummyPLayers();
-        // spawnDummyPLayers();
-        // spawnDummyPLayers();
-
-        // updateColor();
+        // spawnFirstPlayer(); // comment out this function to turn multiplayer back on!!!!!!! (really just so that this script does not spawn the player)
         
     }
 
-    // void spawnDummyPLayers()
-    // {
-    //     randomRespawnNumber = Random.Range(0, 6);
-    //     Debug.Log("random Number: " + randomRespawnNumber);
-    //     GameObject dummyPlayerObject;
-
-    //     if (randomRespawnNumber >= 0 && randomRespawnNumber <= 5)
-    //     {
-    //         // PhotonNetwork.Instantiate("OVRCameraRig", spawnPoints[randomRespawnNumber].transform.position, spawnPoints[randomRespawnNumber].transform.rotation);
-    //         dummyPlayerObject = Instantiate(dummyPlayer, spawnPoints[randomRespawnNumber].transform.position, spawnPoints[randomRespawnNumber].transform.rotation);
-            
-    //         // GameObject playerObject = PhotonNetwork.Instantiate("OVRCameraRig", spawnPoints[numPlayers].transform.position, spawnPoints[numPlayers].transform.rotation);
-    //         // InitializePlayer(playerObject);
-    //     }
-    //     else
-    //     {
-    //         dummyPlayerObject = Instantiate(dummyPlayer, spawnPoints[randomRespawnNumber].transform.position, spawnPoints[randomRespawnNumber].transform.rotation);
-    //     }
-
-
-    //     int playerIndex = players.Count;
-
-    //     // Determine if the player is the chaser
-    //     bool isChaser = false;
-    //     if (playerIndex == 0)
-    //     {
-    //         isChaser = true;
-    //     }
-
-    //     // Add player to the player list with default attributes
-    //     // players.Add(new PlayerClass(playerIndex, isChaser, dummyPlayerObject));
-    //     PlayerClass temp = new PlayerClass(playerIndex, isChaser, dummyPlayerObject);
-    //     GameObject tempParent = temp.transform.parent.gameObject;
-    //     players.Add(tempParent);
-        
-    //     Debug.Log("numplayers = " + players.Count);
-
-    // }
     
 
 
 
+
+
+     ////////////////////// DUMMY PLAYER STUFF vvvvv
+    void spawnFirstPlayer() 
+    {
+        randomRespawnNumber = Random.Range(0, 6);
+        // Debug.Log("random Number: " + randomRespawnNumber);
+        GameObject player1;
+
+        player1 = Instantiate(firstPlayer, spawnPoints[randomRespawnNumber].transform.position, spawnPoints[randomRespawnNumber].transform.rotation);
+        player1.GetComponent<PlayerClass>().InitializePlayer(numPlayers, true, player1, player1.transform.GetChild(0).GetComponent<Renderer>());
+        numPlayers++;
+    }
+
+    void spawnDummyPlayer()
+    {
+        randomRespawnNumber = Random.Range(0, 6);
+        // Debug.Log("random Number: " + randomRespawnNumber);
+        GameObject dummyPlayerObject;
+
+        dummyPlayerObject = Instantiate(dummyPlayer, spawnPoints[randomRespawnNumber].transform.position, spawnPoints[randomRespawnNumber].transform.rotation);
+        dummyPlayerObject.GetComponent<dummyScript>().InitializePlayer(numPlayers, false, dummyPlayerObject, dummyPlayerObject.transform.GetChild(0).GetComponent<Renderer>());
+        numPlayers++;
+    }
+    
+     ////////////////////// DUMMY PLAYER STUFF ^^^^^^^
+
+
     void Update()
     {
-
+        ////////////////////// DUMMY PLAYER STUFF vvvvv
+        if (numPlayers > 0 && flagNumPlayers == false) // spawn 3 dummies after player joined game
+        {
+            flagNumPlayers = true;
+            spawnDummyPlayer();
+            spawnDummyPlayer();
+            spawnDummyPlayer();
+        }
+         ////////////////////// DUMMY PLAYER STUFF ^^^^^
         
     }
 
