@@ -14,7 +14,7 @@ public class PlayerClass : MonoBehaviourPunCallbacks
     GameObject playerBody;
     public bool isChaser;
     private bool timerRunning = false;
-    private float timerDuration = 60f; // 1 minute in seconds    /// 2 minutes is too long for how relatively small the world is
+    private float timerDuration = 120f; // 2 minute in seconds   
     // private float timerDuration = 5f;
 
     void Start()
@@ -119,6 +119,7 @@ public class PlayerClass : MonoBehaviourPunCallbacks
 
         if (numLives <= 0)
         {
+            Debug.Log("Player " + playerID + " lost the game!");
             SceneManager.LoadScene(1);
         }
     }

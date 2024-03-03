@@ -12,7 +12,7 @@ public class dummyScript : MonoBehaviour
     Renderer renderer;
     public bool isChaser;
     private bool timerRunning = false;
-    private float timerDuration = 60f; // 1 minute in seconds
+    private float timerDuration = 120f; // 2 minute in seconds
     // private float timerDuration = 5f;
 
     public void ChangeColorToRed()
@@ -99,6 +99,7 @@ public class dummyScript : MonoBehaviour
 
         if (numLives <= 0)
         {
+            Debug.Log("Dummy " + playerID + " lost the game!");
             SceneManager.LoadScene(1);
         }
     }
