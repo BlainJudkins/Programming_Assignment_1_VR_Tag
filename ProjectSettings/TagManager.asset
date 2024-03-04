@@ -10,6 +10,9 @@ TagManager:
   - Bullet
   - SamplesInfoPanel
   - Dummy
+  - Speed
+  - Force
+  - Teleport
   layers:
   - Default
   - TransparentFX

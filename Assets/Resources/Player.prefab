@@ -322,9 +322,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerID: 0
-  numLives: 0
+  numLives: 3
   teleportCredits: 0
-  speed: 0
+  speed: 10
   renderer: {fileID: 0}
   isChaser: 0
 --- !u!1 &3231329382663831939

@@ -11,7 +11,8 @@ public class FinalMovementScript : MonoBehaviour
 
     private float xInput;
     private float yInput;
-    private float movementSpeed = 10.0f;
+    // private float movementSpeed = 10.0f;
+    private float movementSpeed;
 
     Vector3 smoothMoveVelocity;
     public LayerMask groundedMask;
@@ -22,73 +23,72 @@ public class FinalMovementScript : MonoBehaviour
     private Rigidbody myRB;
     private Transform myXRRig;
 
-     private MeshRenderer myRenderer;
+    private MeshRenderer myRenderer;
+    private PlayerClass playerClass;
+
     // Start is called before the first frame update
-
-
     void Start()
     {
-         myView = GetComponent<PhotonView>();
-
-
-       
-       
+        myView = GetComponent<PhotonView>();
         myChild = transform.GetChild(0).gameObject;
         myRenderer = myChild.GetComponent<MeshRenderer>(); // hides the body from the player's POV
         myRB = myChild.GetComponent<Rigidbody>();
-       
+        
+
         GameObject myXrOrigin = GameObject.Find("XR Origin");
         Cursor.lockState = CursorLockMode.Locked;
         myXRRig = myXrOrigin.transform;
         inputData = myXrOrigin.GetComponent<InputData>();
-         if(myView.IsMine){
 
-            // myRenderer.enabled = false; // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! determines if player sees their own body
+        if (myView.IsMine)
+        {
             myXRRig.position = myChild.transform.position;
             myXrOrigin.transform.SetParent(transform.GetChild(0).transform);
-
-         }
-
+            playerClass = GetComponent<PlayerClass>(); // Get the PlayerClass component
+            movementSpeed = playerClass.speed; // set the movement speed to player's default movement speed, which is 10f
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(myView.IsMine){
+        if (myView.IsMine)
+        {
+            movementSpeed = playerClass.speed; // should update if player's speed ever changes
+            myXRRig.position = myChild.transform.position;
 
-        
+            if (inputData.rightController.TryGetFeatureValue(CommonUsages.primary2DAxis, out Vector2 movement))
+            {
+                xInput = movement.x;
+                yInput = movement.y;
+            }
 
-        
-        myXRRig.position = myChild.transform.position;
-       // myXRRig.rotation = myChild.transform.rotation;
-    
+            // Check if trigger is pressed on the left controller and player has at least 1 teleport credit
+            if (inputData.leftController.TryGetFeatureValue(CommonUsages.trigger, out float triggerValue) && triggerValue > 0 && playerClass.teleportCredits > 0)
+            {
+                TeleportForward();
+            }
 
-        if(inputData.rightController.TryGetFeatureValue(CommonUsages.primary2DAxis, out Vector2 movement)){
-            xInput= movement.x;
-            yInput= movement.y;
-      
-            // usingVR = true;
-            
-         }
-
-
-        Vector3 moveDir = new Vector3(xInput,0, yInput).normalized;
-	    Vector3 targetMoveAmount = moveDir * movementSpeed;
-		moveAmount = Vector3.SmoothDamp(moveAmount,targetMoveAmount,ref smoothMoveVelocity,.15f);
-    
-    }
+            Vector3 moveDir = new Vector3(xInput, 0, yInput).normalized;
+            Vector3 targetMoveAmount = moveDir * movementSpeed;
+            moveAmount = Vector3.SmoothDamp(moveAmount, targetMoveAmount, ref smoothMoveVelocity, .15f);
+        }
     }
 
-     private void FixedUpdate(){
-
-     if(myView.IsMine){
-
-       Vector3 localMove = myXRRig.GetChild(0).transform.GetChild(0).transform.rotation * transform.TransformDirection(moveAmount) * Time.fixedDeltaTime;
-	   myRB.MovePosition(myRB.position + localMove);
-
-         }
-       
-
+    private void FixedUpdate()
+    {
+        if (myView.IsMine)
+        {
+            Vector3 localMove = myXRRig.GetChild(0).transform.GetChild(0).transform.rotation * transform.TransformDirection(moveAmount) * Time.fixedDeltaTime;
+            myRB.MovePosition(myRB.position + localMove);
+        }
     }
 
+    // Teleport the player forward
+    private void TeleportForward()
+    {
+        Vector3 newPosition = transform.position + transform.forward * 3f; // Teleport 3 m in forward direction
+        myRB.MovePosition(newPosition);
+        playerClass.teleportCredits--; // Deduct one teleport credit
+    }
 }

@@ -6,11 +6,18 @@ using UnityEngine.XR;
 public class InputData : MonoBehaviour
 {
     public InputDevice rightController;
+    public InputDevice leftController;
     
 
     // Update is called once per frame
     void Update()
     {
+        
+        if (!leftController.isValid) // added left controller
+        {
+            InitializeInputDevice(InputDeviceCharacteristics.Controller | InputDeviceCharacteristics.Left, ref leftController);
+        }
+
         if (!rightController.isValid)
         {
             InitializeInputDevice(InputDeviceCharacteristics.Controller | InputDeviceCharacteristics.Right, ref rightController);
@@ -29,3 +36,4 @@ public class InputData : MonoBehaviour
         }
     }
 }
+

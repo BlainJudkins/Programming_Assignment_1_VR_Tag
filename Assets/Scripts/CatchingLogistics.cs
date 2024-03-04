@@ -11,24 +11,9 @@ public class CatchingLogistics : MonoBehaviour
     {
         mainScript = GameObject.Find("GameManager").GetComponent<MainGameScript>();
     }
-    // void teleportNewChaser(Transform parent)
-    // {
-    //     randomRespawnNumber = Random.Range(0, 6);
-    //     GameObject spawnPoint = mainScript.spawnPoints[randomRespawnNumber];
 
-    //     parent.transform.position = spawnPoint.transform.position; 
-    //     parent.transform.rotation = Quaternion.identity;
-    // }
     void teleportNewChaser(Transform parent)
     {
-        // if (isOnDummy())
-        // {
-        //     Debug.Log("dummy " + parent.GetComponent<dummyScript>().playerID + " is the new chaser!");
-        // }
-        // else if (isOnPlayer())
-        // {
-        //     Debug.Log("player " + parent.GetComponent<PlayerClass>().playerID + " is the new chaser!");
-        // }
         
         randomRespawnNumber = Random.Range(0, 6);
         GameObject spawnPoint = mainScript.spawnPoints[randomRespawnNumber];
@@ -166,8 +151,83 @@ public class CatchingLogistics : MonoBehaviour
 
             }
         }
+    
+    
+    
+        //////////////////////////////////////////////////////////////////
+    
+
+        // if (isOnDummy()) // if I am a dummy 
+        // {
+        //     if (other.CompareTag("Speed")) // and I touch a speed power
+        //     {
+                
+        //     }
+        //     if (other.CompareTag("Teleport")) // and I touch a teleport power
+        //     {
+                
+        //     }
+        //     if (other.CompareTag("Force") && transform.parent.parent.GetComponent<dummyScript>().isChaser == true) // and I touch a force power AND I am the chaser
+        //     {
+        //         // pull everyone to me
+        //     }
+        //     else if (other.CompareTag("Force") && transform.parent.parent.GetComponent<dummyScript>().isChaser == false) // and I touch and force power and I am NOT the chaser
+        //     {
+        //         // push away ONLY the CHASER
+        //     }
+        // }
+
+        if (isOnPlayer()) // if I am a player
+        {
+            // Debug.Log(other.tag);
+            if (other.CompareTag("Speed")) // and I touch a speed power
+            {
+                Debug.Log("touching speed");
+                Destroy(other.gameObject); // destroy the power up
+                StartCoroutine(speedBoostRoutine());
+
+            }
+            if (other.CompareTag("Teleport")) // and I touch a teleport power
+            {
+                Debug.Log("touching teleport");
+                Destroy(other.gameObject); 
+                transform.parent.parent.GetComponent<PlayerClass>().teleportCredits += 1; // add a tp credit
+
+            }
+            if (other.CompareTag("Force") && transform.parent.parent.GetComponent<PlayerClass>().isChaser == true) // and I touch a force power AND I am the chaser
+            {
+                // pull everyone to me
+                Debug.Log("touching force as the chaser");
+                Destroy(other.gameObject); 
+
+                // TODO
+
+            }
+            else if (other.CompareTag("Force") && transform.parent.parent.GetComponent<PlayerClass>().isChaser == false) // and I touch and force power and I am NOT the chaser
+            {
+                // push away ONLY the CHASER
+                Debug.Log("touching force as NOT the chaser");
+                Destroy(other.gameObject); 
+
+
+                // TODO 
+            }
+        }
+    
+    
     }
     
+
+    IEnumerator speedBoostRoutine()
+    {
+        Debug.Log("speed = " + transform.parent.parent.GetComponent<PlayerClass>().speed.ToString());
+        transform.parent.parent.GetComponent<PlayerClass>().speed *= 2; // apply speed boost
+        Debug.Log("speed = " + transform.parent.parent.GetComponent<PlayerClass>().speed.ToString());
+        yield return new WaitForSeconds(5f); // Wait for 5 seconds
+
+        transform.parent.parent.GetComponent<PlayerClass>().speed /= 2; // Revert the speed back to normal
+        Debug.Log("speed = " + transform.parent.parent.GetComponent<PlayerClass>().speed.ToString());
+    }
 
     
 }
