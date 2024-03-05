@@ -217,6 +217,14 @@ public class CatchingLogistics : MonoBehaviour
                 Destroy(other.gameObject); 
                 StartCoroutine(PushForceRoutine());
             }
+
+            if (other.CompareTag("Smoke")) // and I touch a teleport power
+            {
+                Debug.Log("touching smoke");
+                Destroy(other.gameObject); 
+                
+                StartCoroutine(SmokescreenRoutine());
+            }
         }
     
     
@@ -314,5 +322,28 @@ public class CatchingLogistics : MonoBehaviour
         }
     }
 
-    
+    IEnumerator SmokescreenRoutine()
+    {
+        float duration = 6f; // Duration for which the smoke screen will last // 5 seconds is too short
+        float timer = 0f;
+        List<GameObject> smokePrefabs = new List<GameObject>(); // List to store instantiated smoke prefabs
+
+
+        // Instantiate smoke prefabs at regular intervals
+        while (timer < duration)
+        {
+            GameObject smokePrefabInstance = Instantiate(mainScript.smokePrefab, transform.parent.position, transform.parent.rotation);
+            smokePrefabs.Add(smokePrefabInstance); // Add instantiated smoke prefab to the list
+            yield return new WaitForSeconds(0.5f); // Adjust this value to control the frequency of smoke appearance
+            timer += 0.5f; // Increment timer
+        }
+
+        // Destroy all instantiated smoke prefabs
+        for (int i = 0; i < smokePrefabs.Count; i++)
+        {
+            Destroy(smokePrefabs[i]);
+        }
+
+        smokePrefabs.Clear();
+    }  
 }

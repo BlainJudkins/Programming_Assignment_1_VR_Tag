@@ -15,6 +15,8 @@ public class MainGameScript : MonoBehaviour    // assogm to an empty game object
     [SerializeField] GameObject speedPower;
     [SerializeField] GameObject teleportPower;
     [SerializeField] GameObject forcePower;
+    [SerializeField] GameObject smokePower;
+    [SerializeField] public GameObject smokePrefab;
     private List<GameObject> powerUps = new List<GameObject>();
     [SerializeField] TMP_Text powerText;
     int randomRespawnNumber = 0;
@@ -40,6 +42,7 @@ public class MainGameScript : MonoBehaviour    // assogm to an empty game object
         powerUps.Add(speedPower);
         powerUps.Add(teleportPower);
         powerUps.Add(forcePower);
+        powerUps.Add(smokePower); // add smoke screen
 
 
 
@@ -50,7 +53,8 @@ public class MainGameScript : MonoBehaviour    // assogm to an empty game object
    
         // Instantiate(powerUps[0], powerUpSpawnPoints[0].transform.position, powerUpSpawnPoints[0].transform.rotation);
         // Instantiate(powerUps[1], powerUpSpawnPoints[1].transform.position, powerUpSpawnPoints[1].transform.rotation);
-        Instantiate(powerUps[2], powerUpSpawnPoints[2].transform.position, powerUpSpawnPoints[0].transform.rotation);
+        // Instantiate(powerUps[2], powerUpSpawnPoints[2].transform.position, powerUpSpawnPoints[0].transform.rotation);
+        // Instantiate(powerUps[3], powerUpSpawnPoints[0].transform.position, powerUpSpawnPoints[0].transform.rotation);
     
         
     }

@@ -5670,6 +5670,8 @@ MonoBehaviour:
   speedPower: {fileID: 4554137126765027443, guid: bb531c543149b4a828a15dc1f246b54b, type: 3}
   teleportPower: {fileID: 4554137126765027443, guid: b9298ef2123044f30b570a26e8d9c2aa, type: 3}
   forcePower: {fileID: 4554137126765027443, guid: 8b981d34bc2384a0dba87d37d2a75bf5, type: 3}
+  smokePower: {fileID: 4554137126765027443, guid: d0e895e06a19b4b29a38a5cd7b35e9c7, type: 3}
+  smokePrefab: {fileID: 1642322455942316, guid: 7263e6749585a4a499ad52f8635f76b9, type: 3}
   powerText: {fileID: 1744894877}
   numPlayers: 0
 --- !u!4 &2091543083

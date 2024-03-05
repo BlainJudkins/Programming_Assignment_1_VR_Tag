@@ -13,6 +13,7 @@ TagManager:
   - Speed
   - Force
   - Teleport
+  - Smoke
   layers:
   - Default
   - TransparentFX
