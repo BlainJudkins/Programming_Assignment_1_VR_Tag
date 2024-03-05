@@ -50,7 +50,7 @@ public class MainGameScript : MonoBehaviour    // assogm to an empty game object
    
         // Instantiate(powerUps[0], powerUpSpawnPoints[0].transform.position, powerUpSpawnPoints[0].transform.rotation);
         // Instantiate(powerUps[1], powerUpSpawnPoints[1].transform.position, powerUpSpawnPoints[1].transform.rotation);
-        Instantiate(powerUps[2], powerUpSpawnPoints[2].transform.position, powerUpSpawnPoints[2].transform.rotation);
+        Instantiate(powerUps[2], powerUpSpawnPoints[2].transform.position, powerUpSpawnPoints[0].transform.rotation);
     
         
     }
@@ -90,12 +90,12 @@ public class MainGameScript : MonoBehaviour    // assogm to an empty game object
     void Update()
     {
         ////////////////////// DUMMY PLAYER STUFF vvvvv
-        if (numPlayers > 0 && flagNumPlayers == false) // spawn 3 dummies after player joined game // also wait to spawn power ups until someone is in the world
+        if (numPlayers > 0 && flagNumPlayers == false) // spawn dummies after player joined game // also wait to spawn power ups until someone is in the world
         {
             flagNumPlayers = true;
             spawnDummyPlayer();
             spawnDummyPlayer();
-            spawnDummyPlayer();
+            // spawnDummyPlayer();
 
 
 
@@ -128,7 +128,7 @@ public class MainGameScript : MonoBehaviour    // assogm to an empty game object
             {
                 spawnPowerUps();
                 powerText.text = "A power up has spawned somewhere!";
-                yield return new WaitForSeconds(4f); // clear power text after 4 seconds
+                yield return new WaitForSeconds(6f); // clear power text after 4 seconds
                 powerText.text = "";
             }
             yield return new WaitForSeconds(15f); // Wait for 10 seconds before attempting to spawn another

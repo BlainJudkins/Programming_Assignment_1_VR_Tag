@@ -87,7 +87,7 @@ public class FinalMovementScript : MonoBehaviour
     // Teleport the player forward
     private void TeleportForward()
     {
-        Vector3 newPosition = transform.position + transform.forward * 3f; // Teleport 3 m in forward direction
+        Vector3 newPosition = transform.position + transform.forward * 1f; // Teleport 1 m in forward direction
         myRB.MovePosition(newPosition);
         playerClass.teleportCredits--; // Deduct one teleport credit
     }

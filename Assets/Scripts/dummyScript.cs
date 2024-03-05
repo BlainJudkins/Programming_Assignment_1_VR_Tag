@@ -22,7 +22,7 @@ public class dummyScript : MonoBehaviour
 
     public void ChangeColorToBlue()
     {
-        renderer.material.color = Color.blue; // Set color to blue
+        renderer.material.color = Color.cyan; // Set color to blue
     }
 
     // Method to initialize player attributes
@@ -88,12 +88,10 @@ public class dummyScript : MonoBehaviour
         if (isChaser)
         {
             ChangeColorToRed();
-            // Do chaser-related logic here
         }
         else
         {
             ChangeColorToBlue();
-            // Do non-chaser-related logic here
         }
 
 

@@ -3884,15 +3884,19 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2971337353430760352, guid: 8d104ce79186a4ed4922bb89f49c5edb, type: 3}
       propertyPath: m_Name
-      value: Player
+      value: DummyPlayer
       objectReference: {fileID: 0}
     - target: {fileID: 2971337353430760352, guid: 8d104ce79186a4ed4922bb89f49c5edb, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7299700022930739852, guid: 8d104ce79186a4ed4922bb89f49c5edb, type: 3}
       propertyPath: sceneViewId
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8844642515520263180, guid: 8d104ce79186a4ed4922bb89f49c5edb, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9118407937482953949, guid: 8d104ce79186a4ed4922bb89f49c5edb, type: 3}
       propertyPath: m_LocalPosition.x

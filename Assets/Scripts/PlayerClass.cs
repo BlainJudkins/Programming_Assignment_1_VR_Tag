@@ -129,7 +129,7 @@ public class PlayerClass : MonoBehaviourPunCallbacks
         StopCoroutine(TimerCoroutine());
     }
 
-    ////////////////////// DUMMY PLAYER STUFF vvvvv  (this might not synchronize)
+
     [PunRPC]
     void Update()
     {
@@ -137,12 +137,10 @@ public class PlayerClass : MonoBehaviourPunCallbacks
         if (isChaser)
         {
             renderer.material.color = Color.red;
-            // Do chaser-related logic here
         }
         else
         {
             renderer.material.color = Color.blue;
-            // Do non-chaser-related logic here
         }
 
 
@@ -176,3 +174,4 @@ public class PlayerClass : MonoBehaviourPunCallbacks
     }
 }
 
+////////////////////////// CHECK POINT !!!!!!!

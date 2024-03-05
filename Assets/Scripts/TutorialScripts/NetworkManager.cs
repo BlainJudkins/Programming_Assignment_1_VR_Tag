@@ -12,6 +12,17 @@ public class NetworkManager : MonoBehaviourPunCallbacks //// subclass of MonoBeh
         ConnectedToServer();
     }
 
+
+    // ADDING TO SYNC SCENE CHANGES ////////////////////////////////
+    void Awake()
+    {
+        PhotonNetwork.AutomaticallySyncScene = true;
+    }
+    ////////////////////////////////
+
+
+
+
     private void ConnectedToServer()
     {
         PhotonNetwork.ConnectUsingSettings();

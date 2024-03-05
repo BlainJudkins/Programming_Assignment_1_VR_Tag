@@ -1,15 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
 public class CatchingLogistics : MonoBehaviour
 {
     MainGameScript mainScript;
     int randomRespawnNumber = 0;
+    private PhotonView myView;
 
     void Start()
     {
         mainScript = GameObject.Find("GameManager").GetComponent<MainGameScript>();
+        myView = transform.parent.parent.GetComponent<PhotonView>();
     }
 
     void teleportNewChaser(Transform parent)
@@ -60,11 +63,12 @@ public class CatchingLogistics : MonoBehaviour
         {
             if (other.CompareTag("Dummy")) // I tagged another dummy, ...
             {
+                teleportNewChaser(other.transform.parent); // teleport them FIRST before changing variables
                 other.transform.parent.GetComponent<dummyScript>().isChaser = true; // so set other dummy as chaser
                 other.transform.parent.GetComponent<dummyScript>().ChangeColorToRed(); // change their color
                 other.transform.parent.GetComponent<dummyScript>().numLives--; // and subtract their lives
                 Debug.Log("dummy " + other.transform.parent.GetComponent<dummyScript>().playerID + " is the new chaser!");
-                teleportNewChaser(other.transform.parent); // then teleport them
+                
                 // Debug.Log("other lives = " + other.transform.parent.GetComponent<dummyScript>().numLives);
                 
                 if (isOnDummy()) // I (well, my arm is) am a dummy, so set my self to no longer be chaser and change color to blue
@@ -82,10 +86,11 @@ public class CatchingLogistics : MonoBehaviour
 
             else if (other.CompareTag("Player")) // I tagged another player, ...
             {
+                teleportNewChaser(other.transform.parent); // then teleport them
                 other.transform.parent.GetComponent<PlayerClass>().isChaser = true; // so set other player as chaser
                 other.transform.parent.GetComponent<PlayerClass>().ChangeColorToRed(); // change their color
                 other.transform.parent.GetComponent<PlayerClass>().numLives--; // and subtract their lives
-                teleportNewChaser(other.transform.parent); // then teleport them
+                
                 // Debug.Log("other lives = " + other.transform.parent.GetComponent<PlayerClass>().numLives);
                 Debug.Log("player " + other.transform.parent.GetComponent<PlayerClass>().playerID + " is the new chaser!");
                 
@@ -110,10 +115,11 @@ public class CatchingLogistics : MonoBehaviour
         {
             if (other.CompareTag("Dummy")) // I tagged another dummy, ...
             {
+                teleportNewChaser(other.transform.parent); // then teleport them
                 other.transform.parent.GetComponent<dummyScript>().isChaser = true; // so set other dummy as chaser
                 other.transform.parent.GetComponent<dummyScript>().ChangeColorToRed(); // change their color
                 other.transform.parent.GetComponent<dummyScript>().numLives--; // and subtract their lives
-                teleportNewChaser(other.transform.parent); // then teleport them
+                
                 // Debug.Log("other lives = " + other.transform.parent.GetComponent<dummyScript>().numLives);
                 Debug.Log("dummy " + other.transform.parent.GetComponent<dummyScript>().playerID + " is the new chaser!");
                 
@@ -132,10 +138,11 @@ public class CatchingLogistics : MonoBehaviour
 
             else if (other.CompareTag("Player")) // I tagged another player, ...
             {
+                teleportNewChaser(other.transform.parent); // then teleport them
                 other.transform.parent.GetComponent<PlayerClass>().isChaser = true; // so set other player as chaser
                 other.transform.parent.GetComponent<PlayerClass>().ChangeColorToRed(); // change their color
                 other.transform.parent.GetComponent<PlayerClass>().numLives--; // and subtract their lives
-                teleportNewChaser(other.transform.parent); // then teleport them
+                
                 // Debug.Log("other lives = " + other.transform.parent.GetComponent<PlayerClass>().numLives);
                 Debug.Log("player " + other.transform.parent.GetComponent<PlayerClass>().playerID + " is the new chaser!");
                 if (isOnDummy()) // I (well, my arm is) am a dummy, so set my self to no longer be chaser and change color to blue
@@ -199,8 +206,8 @@ public class CatchingLogistics : MonoBehaviour
                 // pull everyone to me
                 Debug.Log("touching force as the chaser");
                 Destroy(other.gameObject); 
-
-                // TODO
+                StartCoroutine(pullForceRoutine());
+                
 
             }
             else if (other.CompareTag("Force") && transform.parent.parent.GetComponent<PlayerClass>().isChaser == false) // and I touch and force power and I am NOT the chaser
@@ -208,9 +215,7 @@ public class CatchingLogistics : MonoBehaviour
                 // push away ONLY the CHASER
                 Debug.Log("touching force as NOT the chaser");
                 Destroy(other.gameObject); 
-
-
-                // TODO 
+                StartCoroutine(PushForceRoutine());
             }
         }
     
@@ -227,6 +232,86 @@ public class CatchingLogistics : MonoBehaviour
 
         transform.parent.parent.GetComponent<PlayerClass>().speed /= 2; // Revert the speed back to normal
         Debug.Log("speed = " + transform.parent.parent.GetComponent<PlayerClass>().speed.ToString());
+    }
+
+
+    IEnumerator pullForceRoutine()
+    {
+        float maxTime = 5f; // Duration for which the pulling effect will last
+        float timer = 0f;
+
+        // Find and store all players and dummies in the scene
+        List<GameObject> players = new List<GameObject>(GameObject.FindGameObjectsWithTag("Player"));
+        List<GameObject> dummies = new List<GameObject>(GameObject.FindGameObjectsWithTag("Dummy"));
+
+
+        // Remove the object that touched the force powerup from the lists
+        players.Remove(transform.parent.gameObject);
+        dummies.Remove(transform.parent.gameObject);
+
+        // Apply pulling force for the specified duration
+        while (timer < maxTime)
+        {
+            for (int i = 0; i < players.Count; i++)
+            {
+                Vector3 direction = transform.parent.transform.position - players[i].transform.parent.transform.position; // since the tags are all on the body, we need to access their parent object
+                players[i].transform.parent.transform.position += direction.normalized * Time.deltaTime;
+            }
+
+            for (int i = 0; i < dummies.Count; i++)
+            {
+                Vector3 direction = transform.parent.transform.position - dummies[i].transform.parent.transform.position;
+                dummies[i].transform.parent.transform.position += direction.normalized * Time.deltaTime;
+            }
+
+            timer += Time.deltaTime;
+            yield return null;
+        }
+    }
+
+    IEnumerator PushForceRoutine()
+    {
+        float maxTime = 5f; // Duration for which the pushing effect will last
+        float timer = 0f;
+
+        // Find and store all players and dummies in the scene
+        GameObject[] playerObjects = GameObject.FindGameObjectsWithTag("Player");
+        GameObject[] dummyObjects = GameObject.FindGameObjectsWithTag("Dummy");
+
+        // Find the GameObject that is the chaser
+        GameObject chaser = null;
+        for (int i = 0; i < playerObjects.Length; i++)
+        {
+            if (playerObjects[i].transform.parent.GetComponent<PlayerClass>().isChaser)
+            {
+                chaser = playerObjects[i];
+                break;
+            }
+        }
+        if (chaser == null) // it means that none of the players are the chaser, but a dummy is!
+        {
+            for (int i = 0; i < dummyObjects.Length; i++)
+            {
+                if (dummyObjects[i].transform.parent.GetComponent<dummyScript>().isChaser)
+                {
+                    chaser = dummyObjects[i];
+                    break;
+                }
+            }
+        }
+
+        // Apply pushing force for the specified duration
+        while (timer < maxTime)
+        {
+            if (chaser != null)
+            {
+                Vector3 direction = chaser.transform.parent.transform.position - transform.parent.transform.position;
+                chaser.transform.parent.transform.position += direction.normalized * Time.deltaTime;
+            }
+
+            timer += Time.deltaTime;
+            yield return null;
+        }
     }
 
     
