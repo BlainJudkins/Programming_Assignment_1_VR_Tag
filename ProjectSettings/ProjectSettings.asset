@@ -160,6 +160,7 @@ PlayerSettings:
   androidMaxAspectRatio: 2.1
   applicationIdentifier:
     Android: com.DefaultCompany.Programming_Assignment_1_VR_Tag
+    Standalone: com.DefaultCompany.Programming-Assignment-1-VR-Tag
   buildNumber:
     Standalone: 0
     VisionOS: 0
@@ -581,10 +582,10 @@ PlayerSettings:
   enableInternalProfiler: 0
   logObjCUncaughtExceptions: 1
   enableCrashReportAPI: 0
-  cameraUsageDescription: 
+  cameraUsageDescription: vr
   locationUsageDescription: 
-  microphoneUsageDescription: 
-  bluetoothUsageDescription: 
+  microphoneUsageDescription: use mic
+  bluetoothUsageDescription: bluetooth
   macOSTargetOSVersion: 10.13.0
   switchNMETAOverride: 
   switchNetLibKey: 
