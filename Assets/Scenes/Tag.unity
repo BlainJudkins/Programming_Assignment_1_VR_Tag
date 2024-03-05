@@ -5834,6 +5834,8 @@ MonoBehaviour:
   smokePrefab: {fileID: 1642322455942316, guid: 7263e6749585a4a499ad52f8635f76b9, type: 3}
   powerText: {fileID: 1744894877}
   numPlayers: 0
+  allPlayers: []
+  allDummies: []
 --- !u!4 &2091543083
 Transform:
   m_ObjectHideFlags: 0

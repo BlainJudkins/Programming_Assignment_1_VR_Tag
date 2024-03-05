@@ -91,7 +91,7 @@ public class FinalMovementScript : MonoBehaviour
                 myXRRig.Rotate((Vector3.up * Input.GetAxis("Mouse X") * 1));
                 // myXRRig.Rotate((Vector3.up * Input.GetAxis("Mouse Y") * 1));
 
-                if (Input.GetKeyDown(KeyCode.Space))
+                if (Input.GetKeyDown(KeyCode.Space) && playerClass.teleportCredits > 0)
                 {
                     TeleportForward();
                 }

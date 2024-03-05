@@ -70,7 +70,7 @@ public class CatchingLogistics : MonoBehaviour
             {
                 teleportNewChaser(other.transform.parent); // teleport them FIRST before changing variables
                 other.transform.parent.GetComponent<dummyScript>().isChaser = true; // so set other dummy as chaser
-                other.transform.parent.GetComponent<dummyScript>().ChangeColorToRed(); // change their color
+                // other.transform.parent.GetComponent<dummyScript>().ChangeColorToRed(); // change their color
                 other.transform.parent.GetComponent<dummyScript>().numLives--; // and subtract their lives
                 Debug.Log("dummy " + other.transform.parent.GetComponent<dummyScript>().playerID + " is the new chaser!");
                 
@@ -79,12 +79,12 @@ public class CatchingLogistics : MonoBehaviour
                 if (isOnDummy()) // I (well, my arm is) am a dummy, so set my self to no longer be chaser and change color to blue
                 {
                     transform.parent.parent.GetComponent<dummyScript>().isChaser = false; 
-                    transform.parent.parent.GetComponent<dummyScript>().ChangeColorToBlue();
+                    // transform.parent.parent.GetComponent<dummyScript>().ChangeColorToBlue();
                 }
                 else if (isOnPlayer() ) // I am a player, so set my self to no longer be chaser and change color to blue
                 {
                     transform.parent.parent.GetComponent<PlayerClass>().isChaser = false;
-                    transform.parent.parent.GetComponent<PlayerClass>().ChangeColorToBlue();
+                    // transform.parent.parent.GetComponent<PlayerClass>().ChangeColorToBlue();
                 }
 
             }
@@ -93,7 +93,7 @@ public class CatchingLogistics : MonoBehaviour
             {
                 teleportNewChaser(other.transform.parent); // then teleport them
                 other.transform.parent.GetComponent<PlayerClass>().isChaser = true; // so set other player as chaser
-                other.transform.parent.GetComponent<PlayerClass>().ChangeColorToRed(); // change their color
+                // other.transform.parent.GetComponent<PlayerClass>().ChangeColorToRed(); // change their color
                 other.transform.parent.GetComponent<PlayerClass>().numLives--; // and subtract their lives
                 
                 // Debug.Log("other lives = " + other.transform.parent.GetComponent<PlayerClass>().numLives);
@@ -102,12 +102,12 @@ public class CatchingLogistics : MonoBehaviour
                 if (isOnDummy()) // I (well, my arm is) am a dummy, so set my self to no longer be chaser and change color to blue
                 {
                     transform.parent.parent.GetComponent<dummyScript>().isChaser = false; 
-                    transform.parent.parent.GetComponent<dummyScript>().ChangeColorToBlue();
+                    // transform.parent.parent.GetComponent<dummyScript>().ChangeColorToBlue();
                 }
                 else if (isOnPlayer() ) // I am a player, so set my self to no longer be chaser and change color to blue
                 {
                     transform.parent.parent.GetComponent<PlayerClass>().isChaser = false;
-                    transform.parent.parent.GetComponent<PlayerClass>().ChangeColorToBlue();
+                    // transform.parent.parent.GetComponent<PlayerClass>().ChangeColorToBlue();
                 }
 
             }
@@ -122,7 +122,7 @@ public class CatchingLogistics : MonoBehaviour
             {
                 teleportNewChaser(other.transform.parent); // then teleport them
                 other.transform.parent.GetComponent<dummyScript>().isChaser = true; // so set other dummy as chaser
-                other.transform.parent.GetComponent<dummyScript>().ChangeColorToRed(); // change their color
+                // other.transform.parent.GetComponent<dummyScript>().ChangeColorToRed(); // change their color
                 other.transform.parent.GetComponent<dummyScript>().numLives--; // and subtract their lives
                 
                 // Debug.Log("other lives = " + other.transform.parent.GetComponent<dummyScript>().numLives);
@@ -131,12 +131,12 @@ public class CatchingLogistics : MonoBehaviour
                 if (isOnDummy()) // I (well, my arm is) am a dummy, so set my self to no longer be chaser and change color to blue
                 {
                     transform.parent.parent.GetComponent<dummyScript>().isChaser = false; 
-                    transform.parent.parent.GetComponent<dummyScript>().ChangeColorToBlue();
+                    // transform.parent.parent.GetComponent<dummyScript>().ChangeColorToBlue();
                 }
                 else if (isOnPlayer() ) // I am a player, so set my self to no longer be chaser and change color to blue
                 {
                     transform.parent.parent.GetComponent<PlayerClass>().isChaser = false;
-                    transform.parent.parent.GetComponent<PlayerClass>().ChangeColorToBlue();
+                    // transform.parent.parent.GetComponent<PlayerClass>().ChangeColorToBlue();
                 }
 
             }
@@ -145,7 +145,7 @@ public class CatchingLogistics : MonoBehaviour
             {
                 teleportNewChaser(other.transform.parent); // then teleport them
                 other.transform.parent.GetComponent<PlayerClass>().isChaser = true; // so set other player as chaser
-                other.transform.parent.GetComponent<PlayerClass>().ChangeColorToRed(); // change their color
+                // other.transform.parent.GetComponent<PlayerClass>().ChangeColorToRed(); // change their color
                 other.transform.parent.GetComponent<PlayerClass>().numLives--; // and subtract their lives
                 
                 // Debug.Log("other lives = " + other.transform.parent.GetComponent<PlayerClass>().numLives);
@@ -153,12 +153,12 @@ public class CatchingLogistics : MonoBehaviour
                 if (isOnDummy()) // I (well, my arm is) am a dummy, so set my self to no longer be chaser and change color to blue
                 {
                     transform.parent.parent.GetComponent<dummyScript>().isChaser = false; 
-                    transform.parent.parent.GetComponent<dummyScript>().ChangeColorToBlue();
+                    // transform.parent.parent.GetComponent<dummyScript>().ChangeColorToBlue();
                 }
                 else if (isOnPlayer() ) // I am a player, so set my self to no longer be chaser and change color to blue
                 {
                     transform.parent.parent.GetComponent<PlayerClass>().isChaser = false;
-                    transform.parent.parent.GetComponent<PlayerClass>().ChangeColorToBlue();
+                    // transform.parent.parent.GetComponent<PlayerClass>().ChangeColorToBlue();
                 }
 
             }

@@ -6,8 +6,7 @@ public class NetworkPlayerSpawner : MonoBehaviourPunCallbacks
 {
     [SerializeField] List<GameObject> spawnPoints = new List<GameObject>();
 
-
-    // for dummy spawn test vvvvvvv
+    // private PhotonView myView;
     [SerializeField] MainGameScript mainScript;
 
     // ^^^^^^^^^^^^^^^^^^^^^^^
@@ -66,6 +65,64 @@ public class NetworkPlayerSpawner : MonoBehaviourPunCallbacks
         base.OnLeftRoom();
         PhotonNetwork.DestroyPlayerObjects(PhotonNetwork.LocalPlayer);
     }
+
+
+
+
+
+    // [PunRPC]
+    // public void ChangeColorPlayer(PlayerClass player)
+    // {
+        
+    //     if (player.isChaser)
+    //     {
+    //         player.transform.GetChild(0).GetComponent<Renderer>().material.color = Color.red;
+    //     }
+    //     else
+    //     {
+    //         player.transform.GetChild(0).GetComponent<Renderer>().material.color = Color.blue;
+    //     }
+        
+    // }
+
+    // [PunRPC]
+    // public void ChangeColorDummy(dummyScript dummy)
+    // {
+
+    //     if (dummy.isChaser)
+    //     {
+    //         dummy.transform.GetChild(0).GetComponent<Renderer>().material.color = Color.red;
+    //     }
+    //     else
+    //     {
+    //         dummy.transform.GetChild(0).GetComponent<Renderer>().material.color = Color.cyan;
+    //     }
+    // }
+
+
+    // void Update()
+    // {
+
+    //          // Find and store all players and dummies in the scene
+    //     mainScript.allPlayers = new List<GameObject>(GameObject.FindGameObjectsWithTag("Player"));
+    //     mainScript.allDummies = new List<GameObject>(GameObject.FindGameObjectsWithTag("Dummy"));
+
+
+    //     for (int player = 0; player < mainScript.allPlayers.Count; player++)
+    //     {
+    //         myView = mainScript.allPlayers[player].transform.parent.GetComponent<PhotonView>();
+    //         photonView.RPC("ChangeColorPlayer", RpcTarget.AllBuffered, mainScript.allPlayers[player].transform.parent); 
+    //     }
+    //     for (int dummy = 0; dummy < mainScript.allDummies.Count; dummy++)
+    //     {
+    //         myView = mainScript.allDummies[dummy].transform.parent.GetComponent<PhotonView>();
+    //         photonView.RPC("ChangeColorPlayer", RpcTarget.AllBuffered, mainScript.allDummies[dummy].transform.parent); 
+    //     } 
+
+    //     mainScript.allPlayers.Clear();
+    //     mainScript.allDummies.Clear();
+        
+    // }
 }
 
 

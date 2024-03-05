@@ -21,6 +21,10 @@ public class MainGameScript : MonoBehaviour    // assogm to an empty game object
     [SerializeField] TMP_Text powerText;
     int randomRespawnNumber = 0;
     public int numPlayers = 0;
+     // Find and store all players and dummies in the scene
+    public List<GameObject> allPlayers;
+    public List<GameObject> allDummies;
+
     
 
     bool flagNumPlayers = false; // flag for spawning set of dummy players ONCE AFTER the first actual player has entered the game
@@ -100,9 +104,6 @@ public class MainGameScript : MonoBehaviour    // assogm to an empty game object
             spawnDummyPlayer();
             spawnDummyPlayer();
             // spawnDummyPlayer();
-
-
-
 
             // Start the coroutine to spawn power-ups
             StartCoroutine(spawnPowerUpsRoutine());

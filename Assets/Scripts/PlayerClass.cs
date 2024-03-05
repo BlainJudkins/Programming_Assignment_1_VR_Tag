@@ -123,11 +123,11 @@ public class PlayerClass : MonoBehaviourPunCallbacks
     }
 
     // Method to stop the timer
-    private void StopTimer()
-    {
-        timerRunning = false;
-        StopCoroutine(TimerCoroutine());
-    }
+    // private void StopTimer()
+    // {
+    //     timerRunning = false;
+    //     StopCoroutine(TimerCoroutine());
+    // }
 
 
     [PunRPC]
@@ -136,11 +136,13 @@ public class PlayerClass : MonoBehaviourPunCallbacks
         renderer = transform.GetChild(0).GetComponent<Renderer>();
         if (isChaser)
         {
-            renderer.material.color = Color.red;
+            // renderer.material.color = Color.red;
+            photonView.RPC("ChangeColorToRed", RpcTarget.AllBuffered); 
         }
         else
         {
-            renderer.material.color = Color.blue;
+            // renderer.material.color = Color.blue;
+            photonView.RPC("ChangeColorToBlue", RpcTarget.AllBuffered); 
         }
 
 
