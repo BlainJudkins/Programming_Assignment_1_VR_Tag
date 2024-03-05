@@ -8,11 +8,16 @@ public class CatchingLogistics : MonoBehaviour
     MainGameScript mainScript;
     int randomRespawnNumber = 0;
     private PhotonView myView;
+    AudioSource powerSound;
 
     void Start()
     {
         mainScript = GameObject.Find("GameManager").GetComponent<MainGameScript>();
         myView = transform.parent.parent.GetComponent<PhotonView>();
+
+        GameObject powerUpSoundObj = GameObject.Find("PowerUp-Pickup");
+        powerSound = powerUpSoundObj.GetComponent<AudioSource>();
+
     }
 
     void teleportNewChaser(Transform parent)
@@ -162,6 +167,7 @@ public class CatchingLogistics : MonoBehaviour
     
     
         //////////////////////////////////////////////////////////////////
+        ///    POWER UPS
     
 
         // if (isOnDummy()) // if I am a dummy 
@@ -191,6 +197,7 @@ public class CatchingLogistics : MonoBehaviour
             {
                 Debug.Log("touching speed");
                 Destroy(other.gameObject); // destroy the power up
+                powerSound.Play();
                 StartCoroutine(speedBoostRoutine());
 
             }
@@ -198,6 +205,7 @@ public class CatchingLogistics : MonoBehaviour
             {
                 Debug.Log("touching teleport");
                 Destroy(other.gameObject); 
+                powerSound.Play();
                 transform.parent.parent.GetComponent<PlayerClass>().teleportCredits += 1; // add a tp credit
 
             }
@@ -206,6 +214,7 @@ public class CatchingLogistics : MonoBehaviour
                 // pull everyone to me
                 Debug.Log("touching force as the chaser");
                 Destroy(other.gameObject); 
+                powerSound.Play();
                 StartCoroutine(pullForceRoutine());
                 
 
@@ -215,6 +224,7 @@ public class CatchingLogistics : MonoBehaviour
                 // push away ONLY the CHASER
                 Debug.Log("touching force as NOT the chaser");
                 Destroy(other.gameObject); 
+                powerSound.Play();
                 StartCoroutine(PushForceRoutine());
             }
 
@@ -222,7 +232,7 @@ public class CatchingLogistics : MonoBehaviour
             {
                 Debug.Log("touching smoke");
                 Destroy(other.gameObject); 
-                
+                powerSound.Play();
                 StartCoroutine(SmokescreenRoutine());
             }
         }
