@@ -71,9 +71,13 @@ namespace Oculus.Interaction.Editor
             ObjectFactory.componentWasAdded += handleComponentWasAdded;
             AssemblyReloadEvents.beforeAssemblyReload += handleBeforeAssemblyReload;
 
-            for (int idx = 0; idx < SceneManager.loadedSceneCount; ++idx)
+            // for (int idx = 0; idx < SceneManager.loadedSceneCount; ++idx)
+            // {
+            //     handleSceneOpened(EditorSceneManager.GetSceneAt(idx), OpenSceneMode.Additive);
+            // }
+            for (int idx = 0; idx < SceneManager.sceneCount; ++idx)
             {
-                handleSceneOpened(EditorSceneManager.GetSceneAt(idx), OpenSceneMode.Additive);
+                handleSceneOpened(SceneManager.GetSceneAt(idx), OpenSceneMode.Additive);
             }
         }
 
