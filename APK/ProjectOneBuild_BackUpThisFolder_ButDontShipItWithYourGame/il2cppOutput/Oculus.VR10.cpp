@@ -1249,8 +1249,6 @@ IL2CPP_EXTERN_C String_t* _stringLiteral7A8B461D1C6D4AA946FE27643CAD41F1700528BA
 IL2CPP_EXTERN_C String_t* _stringLiteral7F8C014BD4810CC276D0F9F81A1E759C7B098B1E;
 IL2CPP_EXTERN_C String_t* _stringLiteral7F8F4E1B8373DF6DEFF0CA227D126CD0F2969274;
 IL2CPP_EXTERN_C String_t* _stringLiteral8547198FCD4CBEF1644DE037D71CAB719C5682EB;
-IL2CPP_EXTERN_C String_t* _stringLiteral877E03C1CA5D80F13030C4A2546742EFD79C0A9B;
-IL2CPP_EXTERN_C String_t* _stringLiteral87ABD17A182F1221DB4A518E8520A6610334D421;
 IL2CPP_EXTERN_C String_t* _stringLiteral8CC90267359228BBF3FD4EFA7C6B63E4F4D4C76E;
 IL2CPP_EXTERN_C String_t* _stringLiteral93717CD8FCD45BAB4F15D3BACC989A6A93BA2674;
 IL2CPP_EXTERN_C String_t* _stringLiteral97949C809FAE8AD49BF4DA35A46951F99B00E5E1;
@@ -1269,13 +1267,11 @@ IL2CPP_EXTERN_C String_t* _stringLiteralC3B58AE8DE14B5638FD59D9E4695BD116DC49871
 IL2CPP_EXTERN_C String_t* _stringLiteralC5E069394931E8E0955FD9C8114C74F9F13FBDEC;
 IL2CPP_EXTERN_C String_t* _stringLiteralC90919371B2B89DEA9D88530D18C91F93A2B7F2C;
 IL2CPP_EXTERN_C String_t* _stringLiteralCB87DAEFF2474BCA9AC0D74DE634CEDF57A238D4;
-IL2CPP_EXTERN_C String_t* _stringLiteralD09447C95500F6E981D64037BDA5CDA1C5613671;
 IL2CPP_EXTERN_C String_t* _stringLiteralD8B26D2E49ED1906CB08D5EAA595ADF035C65C70;
 IL2CPP_EXTERN_C String_t* _stringLiteralDAEB7B8940990F9109863DC8E84D57775C55E0B6;
 IL2CPP_EXTERN_C String_t* _stringLiteralDB1334B07CE2A0153E77054CF8FA3829A2097735;
 IL2CPP_EXTERN_C String_t* _stringLiteralE73EEE9D297AB0D06F89C521B58BA8DD8209C55C;
 IL2CPP_EXTERN_C String_t* _stringLiteralE7EBB41AAA6DCE2694BE6E79BACC448EECCB1F3C;
-IL2CPP_EXTERN_C String_t* _stringLiteralE9159846CFA311C7F8A91BE8C25CDF799D43B3EE;
 IL2CPP_EXTERN_C String_t* _stringLiteralE9A60084C1546F7084A6B054A0BB5F950E25B26C;
 IL2CPP_EXTERN_C const RuntimeMethod* Array_Sort_TisRaycastHit_t6F30BD0B38B56401CA833A1B87BD74F2ACD2F2B5_mFD3F5417D4D2204CE375C95CC2288AB4F5B8E673_RuntimeMethod_var;
 IL2CPP_EXTERN_C const RuntimeMethod* Assert_IsNotNull_TisOVRPointerEventData_t16F6545720F0956B5AAA7A38FA81CF02E7F37B6D_mB058B605A1DAC76CD12D7D26B4436BF8B7C63590_RuntimeMethod_var;
@@ -7877,6 +7873,10 @@ struct MetaXRFoveationFeature_tFB481C5A003F24CD9E1EDB25912DE747DF8EB6E9_StaticFi
 {
 	// System.UInt64 Meta.XR.MetaXRFoveationFeature::_xrSession
 	uint64_t ____xrSession_18;
+	// System.UInt32 Meta.XR.MetaXRFoveationFeature::_foveatedRenderingLevel
+	uint32_t ____foveatedRenderingLevel_19;
+	// System.UInt32 Meta.XR.MetaXRFoveationFeature::_useDynamicFoveation
+	uint32_t ____useDynamicFoveation_20;
 };
 
 // UnityEngine.MonoBehaviour
@@ -9978,6 +9978,10 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void UnityOpenXR_OnSessionExiting_m5A219E0098
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void UnityOpenXR_OnSessionDestroy_mE22528F3A18F2409377CD0862CC005D7F07442BD (uint64_t ___xrSession0, const RuntimeMethod* method) ;
 // System.Void UnityEngine.XR.OpenXR.Features.OpenXRFeature::.ctor()
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void OpenXRFeature__ctor_m120460E34ECC22ED2DB96797A6DCB5C870E78852 (OpenXRFeature_tC2F8F480D62C277B2ECDD605F64E45053CD85143* __this, const RuntimeMethod* method) ;
+// System.Void Meta.XR.MetaXRFoveationFeature::FBGetFoveationLevel(System.UInt32&)
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void MetaXRFoveationFeature_FBGetFoveationLevel_m834F228F6D9EBF3399C7BD0C62008F37B5A73343 (uint32_t* ___level0, const RuntimeMethod* method) ;
+// System.Void Meta.XR.MetaXRFoveationFeature::FBSetFoveationLevel(System.UInt64,System.UInt32,System.Single,System.UInt32)
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void MetaXRFoveationFeature_FBSetFoveationLevel_mE632F5B6D24328191306AAAE3106FBA418DD3DE7 (uint64_t ___session0, uint32_t ___level1, float ___verticalOffset2, uint32_t ___dynamic3, const RuntimeMethod* method) ;
 // System.Single UnityEngine.Time::get_realtimeSinceStartup()
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR float Time_get_realtimeSinceStartup_m73B3CB73175D79A44333D59BB70F9EDE55EC9510 (const RuntimeMethod* method) ;
 // System.Boolean UnityEngine.Application::get_isPlaying()
@@ -29511,28 +29515,22 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void MetaXRFoveationFeature_OnSessionCreate_m
 // OVRManager/FoveatedRenderingLevel Meta.XR.MetaXRFoveationFeature::get_foveatedRenderingLevel()
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t MetaXRFoveationFeature_get_foveatedRenderingLevel_m60B7A6DBFF1B4B7039DA839792439F6072A12128 (const RuntimeMethod* method) 
 {
-	static bool s_Il2CppMethodInitialized;
-	if (!s_Il2CppMethodInitialized)
+	uint32_t V_0 = 0;
+	int32_t V_1 = 0;
 	{
-		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&Debug_t8394C7EEAECA3689C2C9B9DE9C7166D73596276F_il2cpp_TypeInfo_var);
-		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteralE9159846CFA311C7F8A91BE8C25CDF799D43B3EE);
-		s_Il2CppMethodInitialized = true;
-	}
-	int32_t V_0 = 0;
-	{
-		// Debug.LogWarning("Unable to set foveation level. Meta XR Foveation is not supported on this version of the OpenXR Provider. Please use 1.5.3 and above");
-		il2cpp_codegen_runtime_class_init_inline(Debug_t8394C7EEAECA3689C2C9B9DE9C7166D73596276F_il2cpp_TypeInfo_var);
-		Debug_LogWarning_m33EF1B897E0C7C6FF538989610BFAFFEF4628CA9(_stringLiteralE9159846CFA311C7F8A91BE8C25CDF799D43B3EE, NULL);
-		// return OVRManager.FoveatedRenderingLevel.Off;
-		V_0 = 0;
-		goto IL_0010;
+		// FBGetFoveationLevel(out level);
+		MetaXRFoveationFeature_FBGetFoveationLevel_m834F228F6D9EBF3399C7BD0C62008F37B5A73343((&V_0), NULL);
+		// return (OVRManager.FoveatedRenderingLevel)level;
+		uint32_t L_0 = V_0;
+		V_1 = L_0;
+		goto IL_000d;
 	}
 
-IL_0010:
+IL_000d:
 	{
 		// }
-		int32_t L_0 = V_0;
-		return L_0;
+		int32_t L_1 = V_1;
+		return L_1;
 	}
 }
 // System.Void Meta.XR.MetaXRFoveationFeature::set_foveatedRenderingLevel(OVRManager/FoveatedRenderingLevel)
@@ -29541,20 +29539,40 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void MetaXRFoveationFeature_set_foveatedRende
 	static bool s_Il2CppMethodInitialized;
 	if (!s_Il2CppMethodInitialized)
 	{
-		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&Debug_t8394C7EEAECA3689C2C9B9DE9C7166D73596276F_il2cpp_TypeInfo_var);
-		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteral87ABD17A182F1221DB4A518E8520A6610334D421);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&MetaXRFoveationFeature_tFB481C5A003F24CD9E1EDB25912DE747DF8EB6E9_il2cpp_TypeInfo_var);
 		s_Il2CppMethodInitialized = true;
 	}
+	bool V_0 = false;
 	{
-		// Debug.LogWarning("Unable to get foveation level. Meta XR Foveation is not supported on this version of the OpenXR Provider. Please use 1.5.3 and above");
-		il2cpp_codegen_runtime_class_init_inline(Debug_t8394C7EEAECA3689C2C9B9DE9C7166D73596276F_il2cpp_TypeInfo_var);
-		Debug_LogWarning_m33EF1B897E0C7C6FF538989610BFAFFEF4628CA9(_stringLiteral87ABD17A182F1221DB4A518E8520A6610334D421, NULL);
-		// return;
-		goto IL_000e;
+		// if (value == OVRManager.FoveatedRenderingLevel.HighTop)
+		int32_t L_0 = ___value0;
+		V_0 = (bool)((((int32_t)L_0) == ((int32_t)4))? 1 : 0);
+		bool L_1 = V_0;
+		if (!L_1)
+		{
+			goto IL_0011;
+		}
+	}
+	{
+		// _foveatedRenderingLevel = (UInt32)OVRManager.FoveatedRenderingLevel.High;
+		((MetaXRFoveationFeature_tFB481C5A003F24CD9E1EDB25912DE747DF8EB6E9_StaticFields*)il2cpp_codegen_static_fields_for(MetaXRFoveationFeature_tFB481C5A003F24CD9E1EDB25912DE747DF8EB6E9_il2cpp_TypeInfo_var))->____foveatedRenderingLevel_19 = 3;
+		goto IL_0017;
 	}
 
-IL_000e:
+IL_0011:
 	{
+		// _foveatedRenderingLevel = (UInt32)value;
+		int32_t L_2 = ___value0;
+		((MetaXRFoveationFeature_tFB481C5A003F24CD9E1EDB25912DE747DF8EB6E9_StaticFields*)il2cpp_codegen_static_fields_for(MetaXRFoveationFeature_tFB481C5A003F24CD9E1EDB25912DE747DF8EB6E9_il2cpp_TypeInfo_var))->____foveatedRenderingLevel_19 = L_2;
+	}
+
+IL_0017:
+	{
+		// FBSetFoveationLevel(_xrSession, _foveatedRenderingLevel, 0.0f, _useDynamicFoveation);
+		uint64_t L_3 = ((MetaXRFoveationFeature_tFB481C5A003F24CD9E1EDB25912DE747DF8EB6E9_StaticFields*)il2cpp_codegen_static_fields_for(MetaXRFoveationFeature_tFB481C5A003F24CD9E1EDB25912DE747DF8EB6E9_il2cpp_TypeInfo_var))->____xrSession_18;
+		uint32_t L_4 = ((MetaXRFoveationFeature_tFB481C5A003F24CD9E1EDB25912DE747DF8EB6E9_StaticFields*)il2cpp_codegen_static_fields_for(MetaXRFoveationFeature_tFB481C5A003F24CD9E1EDB25912DE747DF8EB6E9_il2cpp_TypeInfo_var))->____foveatedRenderingLevel_19;
+		uint32_t L_5 = ((MetaXRFoveationFeature_tFB481C5A003F24CD9E1EDB25912DE747DF8EB6E9_StaticFields*)il2cpp_codegen_static_fields_for(MetaXRFoveationFeature_tFB481C5A003F24CD9E1EDB25912DE747DF8EB6E9_il2cpp_TypeInfo_var))->____useDynamicFoveation_20;
+		MetaXRFoveationFeature_FBSetFoveationLevel_mE632F5B6D24328191306AAAE3106FBA418DD3DE7(L_3, L_4, (0.0f), L_5, NULL);
 		// }
 		return;
 	}
@@ -29562,28 +29580,22 @@ IL_000e:
 // System.Boolean Meta.XR.MetaXRFoveationFeature::get_useDynamicFoveatedRendering()
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool MetaXRFoveationFeature_get_useDynamicFoveatedRendering_mB62EA8E251E62904AAEDDBA22A2AD4C3877FAA3C (const RuntimeMethod* method) 
 {
-	static bool s_Il2CppMethodInitialized;
-	if (!s_Il2CppMethodInitialized)
+	uint32_t V_0 = 0;
+	bool V_1 = false;
 	{
-		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&Debug_t8394C7EEAECA3689C2C9B9DE9C7166D73596276F_il2cpp_TypeInfo_var);
-		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteralD09447C95500F6E981D64037BDA5CDA1C5613671);
-		s_Il2CppMethodInitialized = true;
-	}
-	bool V_0 = false;
-	{
-		// Debug.LogWarning("Unable to set dynamic foveation. Meta XR Foveation is not supported on this version of the OpenXR Provider. Please use 1.5.3 and above");
-		il2cpp_codegen_runtime_class_init_inline(Debug_t8394C7EEAECA3689C2C9B9DE9C7166D73596276F_il2cpp_TypeInfo_var);
-		Debug_LogWarning_m33EF1B897E0C7C6FF538989610BFAFFEF4628CA9(_stringLiteralD09447C95500F6E981D64037BDA5CDA1C5613671, NULL);
-		// return false;
-		V_0 = (bool)0;
+		// FBGetFoveationLevel(out dynamic);
+		MetaXRFoveationFeature_FBGetFoveationLevel_m834F228F6D9EBF3399C7BD0C62008F37B5A73343((&V_0), NULL);
+		// return dynamic != 0;
+		uint32_t L_0 = V_0;
+		V_1 = (bool)((!(((uint32_t)L_0) <= ((uint32_t)0)))? 1 : 0);
 		goto IL_0010;
 	}
 
 IL_0010:
 	{
 		// }
-		bool L_0 = V_0;
-		return L_0;
+		bool L_1 = V_1;
+		return L_1;
 	}
 }
 // System.Void Meta.XR.MetaXRFoveationFeature::set_useDynamicFoveatedRendering(System.Boolean)
@@ -29592,20 +29604,39 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void MetaXRFoveationFeature_set_useDynamicFov
 	static bool s_Il2CppMethodInitialized;
 	if (!s_Il2CppMethodInitialized)
 	{
-		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&Debug_t8394C7EEAECA3689C2C9B9DE9C7166D73596276F_il2cpp_TypeInfo_var);
-		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteral877E03C1CA5D80F13030C4A2546742EFD79C0A9B);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&MetaXRFoveationFeature_tFB481C5A003F24CD9E1EDB25912DE747DF8EB6E9_il2cpp_TypeInfo_var);
 		s_Il2CppMethodInitialized = true;
 	}
+	bool V_0 = false;
 	{
-		// Debug.LogWarning("Unable to get dynamic foveation. Meta XR Foveation is not supported on this version of the OpenXR Provider. Please use 1.5.3 and above");
-		il2cpp_codegen_runtime_class_init_inline(Debug_t8394C7EEAECA3689C2C9B9DE9C7166D73596276F_il2cpp_TypeInfo_var);
-		Debug_LogWarning_m33EF1B897E0C7C6FF538989610BFAFFEF4628CA9(_stringLiteral877E03C1CA5D80F13030C4A2546742EFD79C0A9B, NULL);
-		// return;
-		goto IL_000e;
+		// if (value)
+		bool L_0 = ___value0;
+		V_0 = L_0;
+		bool L_1 = V_0;
+		if (!L_1)
+		{
+			goto IL_000e;
+		}
+	}
+	{
+		// _useDynamicFoveation = 1;
+		((MetaXRFoveationFeature_tFB481C5A003F24CD9E1EDB25912DE747DF8EB6E9_StaticFields*)il2cpp_codegen_static_fields_for(MetaXRFoveationFeature_tFB481C5A003F24CD9E1EDB25912DE747DF8EB6E9_il2cpp_TypeInfo_var))->____useDynamicFoveation_20 = 1;
+		goto IL_0014;
 	}
 
 IL_000e:
 	{
+		// _useDynamicFoveation = 0;
+		((MetaXRFoveationFeature_tFB481C5A003F24CD9E1EDB25912DE747DF8EB6E9_StaticFields*)il2cpp_codegen_static_fields_for(MetaXRFoveationFeature_tFB481C5A003F24CD9E1EDB25912DE747DF8EB6E9_il2cpp_TypeInfo_var))->____useDynamicFoveation_20 = 0;
+	}
+
+IL_0014:
+	{
+		// FBSetFoveationLevel(_xrSession, _foveatedRenderingLevel, 0.0f, _useDynamicFoveation);
+		uint64_t L_2 = ((MetaXRFoveationFeature_tFB481C5A003F24CD9E1EDB25912DE747DF8EB6E9_StaticFields*)il2cpp_codegen_static_fields_for(MetaXRFoveationFeature_tFB481C5A003F24CD9E1EDB25912DE747DF8EB6E9_il2cpp_TypeInfo_var))->____xrSession_18;
+		uint32_t L_3 = ((MetaXRFoveationFeature_tFB481C5A003F24CD9E1EDB25912DE747DF8EB6E9_StaticFields*)il2cpp_codegen_static_fields_for(MetaXRFoveationFeature_tFB481C5A003F24CD9E1EDB25912DE747DF8EB6E9_il2cpp_TypeInfo_var))->____foveatedRenderingLevel_19;
+		uint32_t L_4 = ((MetaXRFoveationFeature_tFB481C5A003F24CD9E1EDB25912DE747DF8EB6E9_StaticFields*)il2cpp_codegen_static_fields_for(MetaXRFoveationFeature_tFB481C5A003F24CD9E1EDB25912DE747DF8EB6E9_il2cpp_TypeInfo_var))->____useDynamicFoveation_20;
+		MetaXRFoveationFeature_FBSetFoveationLevel_mE632F5B6D24328191306AAAE3106FBA418DD3DE7(L_2, L_3, (0.0f), L_4, NULL);
 		// }
 		return;
 	}

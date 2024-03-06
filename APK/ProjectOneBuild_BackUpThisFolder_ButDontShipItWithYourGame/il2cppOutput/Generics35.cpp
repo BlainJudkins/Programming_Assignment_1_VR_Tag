@@ -3782,12 +3782,6 @@ struct uint3_tC1C1C817DB46ED2E6A6C7390716FDDD565917F7B
 	uint32_t ___z_2;
 };
 
-struct uint3_tC1C1C817DB46ED2E6A6C7390716FDDD565917F7B_StaticFields
-{
-	// Unity.Mathematics.uint3 Unity.Mathematics.uint3::zero
-	uint3_tC1C1C817DB46ED2E6A6C7390716FDDD565917F7B ___zero_3;
-};
-
 // Interop/ErrorInfo
 struct ErrorInfo_t776D0DEFF42C5321EB2548D87ED238CBE55467F8 
 {

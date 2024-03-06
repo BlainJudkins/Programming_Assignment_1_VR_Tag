@@ -3973,8 +3973,6 @@ struct float3x3_tB318DB8C7E54B6CA9E14EB9AC7F5964C1189FC79_StaticFields
 {
 	// Unity.Mathematics.float3x3 Unity.Mathematics.float3x3::identity
 	float3x3_tB318DB8C7E54B6CA9E14EB9AC7F5964C1189FC79 ___identity_3;
-	// Unity.Mathematics.float3x3 Unity.Mathematics.float3x3::zero
-	float3x3_tB318DB8C7E54B6CA9E14EB9AC7F5964C1189FC79 ___zero_4;
 };
 
 // Unity.Mathematics.quaternion

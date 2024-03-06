@@ -3692,12 +3692,6 @@ struct uint3_tC1C1C817DB46ED2E6A6C7390716FDDD565917F7B
 	uint32_t ___z_2;
 };
 
-struct uint3_tC1C1C817DB46ED2E6A6C7390716FDDD565917F7B_StaticFields
-{
-	// Unity.Mathematics.uint3 Unity.Mathematics.uint3::zero
-	uint3_tC1C1C817DB46ED2E6A6C7390716FDDD565917F7B ___zero_3;
-};
-
 // UnityEngine.UIElements.StyleSheets.BaseStyleMatcher/MatchContext
 struct MatchContext_t04110FFA271D89A23BC1918BE657634A7DC06253 
 {
