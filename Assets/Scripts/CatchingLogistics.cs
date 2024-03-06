@@ -112,6 +112,7 @@ public class CatchingLogistics : MonoBehaviour
 
             }
 
+            // transform.parent.parent.GetComponent<PhotonView>().RPC("SyncValues", RpcTarget.OthersBuffered);
 
         }
 
@@ -162,6 +163,12 @@ public class CatchingLogistics : MonoBehaviour
                 }
 
             }
+
+
+
+
+            // transform.parent.parent.GetComponent<PhotonView>().RPC("SyncValues", RpcTarget.OthersBuffered);
+
         }
     
     
@@ -169,26 +176,6 @@ public class CatchingLogistics : MonoBehaviour
         //////////////////////////////////////////////////////////////////
         ///    POWER UPS
     
-
-        // if (isOnDummy()) // if I am a dummy 
-        // {
-        //     if (other.CompareTag("Speed")) // and I touch a speed power
-        //     {
-                
-        //     }
-        //     if (other.CompareTag("Teleport")) // and I touch a teleport power
-        //     {
-                
-        //     }
-        //     if (other.CompareTag("Force") && transform.parent.parent.GetComponent<dummyScript>().isChaser == true) // and I touch a force power AND I am the chaser
-        //     {
-        //         // pull everyone to me
-        //     }
-        //     else if (other.CompareTag("Force") && transform.parent.parent.GetComponent<dummyScript>().isChaser == false) // and I touch and force power and I am NOT the chaser
-        //     {
-        //         // push away ONLY the CHASER
-        //     }
-        // }
 
         if (isOnPlayer()) // if I am a player
         {
@@ -356,4 +343,33 @@ public class CatchingLogistics : MonoBehaviour
 
         smokePrefabs.Clear();
     }  
+
+
+    
 }
+
+
+/*
+
+photonView.RPC("SyncValues", RpcTarget.OthersBuffered);
+   
+
+    [PunRPC] void SyncValues()
+    {
+        for (int i = 0; i < mainScript.allPlayers.Count; i++)
+        {
+            if (mainScript.allPlayers[i].GetComponent<PlayerClass>().playerID == playerID) // I found myself in the list
+            {
+                mainScript.allPlayers[i].GetComponent<PlayerClass>().isChaser = isChaser;
+            }
+        }
+        for (int j = 0; j < mainScript.allDummies.Count; j++)
+        {
+            if (mainScript.allDummies[j].GetComponent<PlayerClass>().playerID == playerID) // I found myself in the list
+            {
+                mainScript.allDummies[j].GetComponent<PlayerClass>().isChaser = isChaser;
+            }
+        }
+    }
+
+*/

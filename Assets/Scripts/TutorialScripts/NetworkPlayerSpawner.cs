@@ -44,7 +44,7 @@ public class NetworkPlayerSpawner : MonoBehaviourPunCallbacks
             playerObject.GetComponent<PlayerClass>().InitializePlayer(PhotonNetwork.CurrentRoom.PlayerCount - 1, false, playerObject, renderer); // Set non-host players
         }
 
-
+        mainScript.allPlayers.Add(playerObject);
 
         // for dummy spawn test vvvvvvv
         mainScript.numPlayers++;
@@ -124,5 +124,7 @@ public class NetworkPlayerSpawner : MonoBehaviourPunCallbacks
         
     // }
 }
+
+
 
 

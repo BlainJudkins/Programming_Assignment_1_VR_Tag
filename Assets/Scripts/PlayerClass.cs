@@ -20,7 +20,7 @@ public class PlayerClass : MonoBehaviourPunCallbacks
     private float timerDuration = 120f; // 2 minute in seconds   
     // private float timerDuration = 5f;
 
-
+    MainGameScript mainScript;
 
     private TMP_Text livesText;
     private TMP_Text creditsText;
@@ -44,6 +44,10 @@ public class PlayerClass : MonoBehaviourPunCallbacks
             numLives = 3;
         }
         Debug.Log("lives = " + numLives);
+
+        mainScript = GameObject.Find("GameManager").GetComponent<MainGameScript>();
+
+        // photonView.RPC("SyncValues", RpcTarget.OthersBuffered);
 
 
         // Find the TextMeshProUGUI objects dynamically
@@ -122,27 +126,19 @@ public class PlayerClass : MonoBehaviourPunCallbacks
         }
     }
 
-    // Method to stop the timer
-    // private void StopTimer()
-    // {
-    //     timerRunning = false;
-    //     StopCoroutine(TimerCoroutine());
-    // }
 
-
-    [PunRPC]
     void Update()
     {
         renderer = transform.GetChild(0).GetComponent<Renderer>();
         if (isChaser)
         {
-            // renderer.material.color = Color.red;
-            photonView.RPC("ChangeColorToRed", RpcTarget.AllBuffered); 
+            renderer.material.color = Color.red;
+            // photonView.RPC("ChangeColorToRed", RpcTarget.AllBuffered); 
         }
         else
         {
-            // renderer.material.color = Color.blue;
-            photonView.RPC("ChangeColorToBlue", RpcTarget.AllBuffered); 
+            renderer.material.color = Color.blue;
+            // photonView.RPC("ChangeColorToBlue", RpcTarget.AllBuffered); 
         }
 
 
@@ -172,8 +168,52 @@ public class PlayerClass : MonoBehaviourPunCallbacks
         }
 
 
-
+        // photonView.RPC("SyncValues", RpcTarget.OthersBuffered);
     }
+
+    [PunRPC] void SyncValues()
+    {
+        for (int i = 0; i < mainScript.allPlayers.Count; i++)
+        {
+            if (mainScript.allPlayers[i].GetComponent<PlayerClass>().playerID == playerID) // I found myself in the list
+            {
+                mainScript.allPlayers[i].GetComponent<PlayerClass>().isChaser = isChaser;
+            }
+        }
+        for (int j = 0; j < mainScript.allDummies.Count; j++)
+        {
+            if (mainScript.allDummies[j].GetComponent<PlayerClass>().playerID == playerID) // I found myself in the list
+            {
+                mainScript.allDummies[j].GetComponent<PlayerClass>().isChaser = isChaser;
+            }
+        }
+    }
+
 }
 
-////////////////////////// CHECK POINT !!!!!!!
+
+/*
+public float someFloat = 10f;
+public int someInt = 100;
+public PhotonView pv;
+
+void Update(){
+if(Input.GetKeyDown(KeyCode.Space)){
+pv.RPC("SyncValues", RPCTarget.OthersBuffered, someFloat, someInt);
+}
+}
+
+[PunRPC]
+void SyncValues (float myFloat, int myInt){
+someFloat = myFloat;
+someInt = myInt;
+}
+
+//Buffered - New players get the RPC when they join as it's buffered (until this client leaves).
+
+so, in this example I think that the values of the someFloat and someInt should be sync upon all the instances
+
+myView.RPC("SyncValues", RPCTarget.OthersBuffered, someFloat, someInt); --> You are calling this function with arguments, which can be synced across the instances
+
+
+*/

@@ -90,6 +90,7 @@ public class MainGameScript : MonoBehaviour    // assogm to an empty game object
         dummyPlayerObject = Instantiate(dummyPlayer, spawnPoints[randomRespawnNumber].transform.position, spawnPoints[randomRespawnNumber].transform.rotation);
         dummyPlayerObject.GetComponent<dummyScript>().InitializePlayer(numPlayers, false, dummyPlayerObject, dummyPlayerObject.transform.GetChild(0).GetComponent<Renderer>());
         numPlayers++;
+        allDummies.Add(dummyPlayerObject);
     }
     
      ////////////////////// DUMMY PLAYER STUFF ^^^^^^^
@@ -104,6 +105,20 @@ public class MainGameScript : MonoBehaviour    // assogm to an empty game object
             spawnDummyPlayer();
             spawnDummyPlayer();
             // spawnDummyPlayer();
+
+
+            Debug.Log("Dummies");
+            for (int i = 0; i < allDummies.Count; i++)
+            {
+                Debug.Log(allDummies[i].GetComponent<dummyScript>().playerID);
+            }
+            Debug.Log("Players");
+            for (int j = 0; j < allPlayers.Count; j++)
+            {
+                Debug.Log(allPlayers[j].GetComponent<PlayerClass>().playerID);
+            }
+
+
 
             // Start the coroutine to spawn power-ups
             StartCoroutine(spawnPowerUpsRoutine());
