@@ -102,8 +102,8 @@ public class MainGameScript : MonoBehaviour    // assogm to an empty game object
         if (numPlayers > 0 && flagNumPlayers == false) // spawn dummies after player joined game // also wait to spawn power ups until someone is in the world
         {
             flagNumPlayers = true;
-            spawnDummyPlayer();
-            spawnDummyPlayer();
+            // spawnDummyPlayer();
+            // spawnDummyPlayer();
             // spawnDummyPlayer();
 
 
